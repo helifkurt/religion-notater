@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Religion og etikk – Del 1</title>
+<style>
+  :root{
+    --brand:#E67AA8;
+    --accent:#F2A6C6;
+    --box-fill:#FDEEF5;
+    --warn-fill:#FFF5FA;
+    --text:#222;
+    --muted:#666;
+    --bg:#FFFAFC;
+    --border:#F2A6C6;
+    --grey-box:#f4f4f4;
+    --grey-border:#cfcfcf;
+    --warn-border:#e6a5a0;
+    --warn-text:#a83a30;
+    --sidebar-w:260px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Times New Roman", Times, Georgia, serif;line-height:1.55;}
+  a{color:var(--brand);}
+  /* Topbar */
+  .topbar{
+    position:sticky;top:0;z-index:190;
+    display:flex;align-items:center;gap:14px;
+    background:var(--brand);color:#fff;
+    padding:14px 18px;
+  }
+  .topbar .title{font-weight:700;font-size:1.05rem;}
+  #menuToggle{display:none;background:rgba(255,255,255,.18);color:#fff;border:none;border-radius:8px;width:38px;height:38px;font-size:1.2rem;cursor:pointer;flex-shrink:0;}
+  #overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:150;}
+  .layout{display:flex;align-items:flex-start;}
+  /* Sidebar */
+  #sidebar{
+    width:var(--sidebar-w);
+    flex-shrink:0;
+    background:#fff;
+    border-right:1px solid #f1d9e4;
+    padding:20px 14px 40px;
+    position:sticky;
+    top:64px;
+    height:calc(100vh - 64px);
+    overflow-y:auto;
+  }
+  #sidebar nav ul{list-style:none;margin:0;padding:0;}
+  #sidebar nav li{margin:1px 0;}
+  #sidebar nav a{
+    display:block;
+    padding:7px 10px;
+    border-radius:8px;
+    text-decoration:none;
+    color:var(--text);
+    font-size:0.87rem;
+  }
+  #sidebar nav a:hover{background:var(--box-fill);}
+  #sidebar nav a.active{background:var(--accent);color:#fff;font-weight:600;}
+  #sidebar nav .group-title{
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.04em;
+    color:var(--muted);
+    margin:14px 0 4px 10px;
+  }
+  /* Main */
+  main{flex:1;min-width:0;padding:32px 36px 100px;max-width:820px;}
+  .section{scroll-margin-top:80px;margin-bottom:50px;}
+  .section h2{color:var(--brand);font-size:1.45rem;border-bottom:2px solid var(--border);padding-bottom:8px;margin-top:0;}
+  .section h3{color:var(--brand);font-size:1.1rem;margin-top:26px;}
+  .section h4{color:var(--text);font-size:1rem;margin-top:18px;}
+  .box{background:var(--box-fill);border:1px solid var(--border);border-left:5px solid var(--brand);border-radius:10px;padding:16px 20px;margin:18px 0;}
+  .box.plain{background:var(--grey-box);border-color:var(--grey-border);border-left-color:#999;}
+  .box.grey{background:var(--grey-box);border-color:var(--grey-border);border-left-color:#999;}
+  .box.warn{background:var(--warn-fill);border-color:var(--warn-border);border-left-color:var(--warn-text);}
+  .box p:first-child{margin-top:0;}
+  .box p:last-child{margin-bottom:0;}
+  .box-title{font-weight:700;color:var(--brand);margin-bottom:8px;}
+  .box.grey .box-title, .box.plain .box-title{color:#555;}
+  .box.warn .box-title{color:var(--warn-text);}
+  ul, ol{padding-left:1.3em;}
+  li{margin:5px 0;}
+  details.qa{background:var(--grey-box);border:1px solid var(--grey-border);border-radius:10px;margin:10px 0;padding:10px 16px;}
+  details.qa summary{cursor:pointer;font-weight:600;padding:6px 0;}
+  details.qa[open] summary{color:var(--brand);}
+  details.qa .fasit{margin-top:8px;padding:10px 14px;background:#fff;border-left:4px solid var(--brand);border-radius:6px;}
+  /* front page */
+  #forside{padding-top:4px;}
+  #forside .kompetansemal{background:var(--box-fill);border:1px solid var(--border);border-radius:12px;padding:18px 22px;}
+  #forside .kompetansemal li{margin:6px 0;}
+  /* checklist */
+  .checklist label{display:flex;align-items:flex-start;gap:10px;margin:8px 0;cursor:pointer;}
+  .checklist input{margin-top:4px;width:17px;height:17px;accent-color:var(--brand);}
+  .checklist .done{color:var(--muted);text-decoration:line-through;}
+  /* flashcards */
+  #flashwrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin:20px 0;}
+  .fc-scene{width:100%;max-width:480px;height:220px;perspective:1200px;}
+  .fc-card{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s;cursor:pointer;}
+  .fc-card.flipped{transform:rotateY(180deg);}
+  .fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;display:flex;align-items:center;justify-content:center;text-align:center;padding:22px;font-size:1.05rem;box-shadow:0 3px 10px rgba(0,0,0,.08);}
+  .fc-front{background:var(--brand);color:#fff;font-weight:600;}
+  .fc-back{background:#fff;border:1px solid var(--border);transform:rotateY(180deg);}
+  .fc-controls{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .fc-controls button{background:#fff;border:1px solid var(--border);border-radius:8px;padding:9px 16px;cursor:pointer;font-size:0.9rem;color:var(--text);}
+  .fc-controls button:hover{background:var(--box-fill);}
+  .fc-controls button.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
+  .fc-progress{font-size:0.85rem;color:var(--muted);}
+  .fc-known-badge{font-size:0.8rem;color:#2e7d32;}
+  /* misc */
+  .quote{font-style:italic;color:var(--muted);}
+  hr.soft{border:none;border-top:1px solid var(--border);margin:30px 0;}
+  .backtotop{position:fixed;right:22px;bottom:22px;background:var(--brand);color:#fff;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:1.1rem;box-shadow:0 3px 10px rgba(0,0,0,.15);}
+  @media (max-width:820px){
+    #sidebar{position:fixed;left:0;top:0;transform:translateX(-105%);transition:transform .25s;z-index:180;height:100vh;padding-top:70px;box-shadow:2px 0 12px rgba(0,0,0,.15);}
+    #sidebar.open{transform:translateX(0);}
+    #menuToggle{display:block;}
+    #overlay.show{display:block;}
+    main{padding:24px 18px 80px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button id="menuToggle" aria-label="Meny">☰</button>
+  <div class="title">Religion og etikk — Notatbok</div>
+</header>
+<div id="overlay"></div>
+
+<div class="layout">
+  <aside id="sidebar">
+    <nav>
+      <ul id="navlist">
+        <li><a href="#forside">Forside &amp; kompetansemål</a></li>
+        <li class="group-title">Del 1 — Teori</li>
+        <li><a href="#del-a">A. Livssyn</a></li>
+        <li><a href="#del-b">B. Å definere religion</a></li>
+        <li><a href="#del-c">C. Substansielle definisjoner</a></li>
+        <li><a href="#del-d">D. Funksjonelle definisjoner</a></li>
+        <li><a href="#del-e">E. Religiøs opplevelse &amp; mystikk</a></li>
+        <li><a href="#del-f">F. Religiøse tekster &amp; myter</a></li>
+        <li><a href="#del-g">G. Ritualer</a></li>
+        <li><a href="#del-h">H. Det materielle &amp; estetikken</a></li>
+        <li><a href="#del-i">I. Sosial organisering</a></li>
+        <li><a href="#del-j">J. Virkelighet &amp; menneskesyn</a></li>
+        <li><a href="#del-k">K. Etikk</a></li>
+        <li><a href="#del-l">L. Religion i moderne Norge</a></li>
+        <li><a href="#del-m">M. Fundamentalisme</a></li>
+        <li><a href="#del-n">N. Hvordan jobbe med faget</a></li>
+        <li><a href="#del-o">O. Religionskritikk</a></li>
+        <li class="group-title">Øving</li>
+        <li><a href="#pugging">Flashcards</a></li>
+        <li><a href="#oppgaver">Oppgaver + fasit</a></li>
+        <li><a href="#kompetanse">Kobling til kompetansemål</a></li>
+        <li><a href="#sjekkliste">Sjekkliste</a></li>
+        <li><a href="#feil">Vanlige eksamensfeil</a></li>
+        <li><a href="#ordliste">Ordliste</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main id="maincontent">
+
+  <section class="section" id="forside">
+    <h2>Del 1: Religion, livssyn og etikk</h2>
+    <p>Dette dybdenotatet dekker definisjoner av livssyn og religion, substansielle og funksjonelle religionsdefinisjoner, kilder til kunnskap om religion (mystikk, myte, ritualer, det materielle/estetikk, sosial organisering), virkelighetsoppfatning, menneskesyn, etikk, og religion i det moderne Norge.</p>
+    <div class="kompetansemal">
+      <div class="box-title">Mest relevante kompetansemål (REL01-02)</div>
+      <ul>
+        <li>gjøre rede for og drøfte sentrale fagbegreper knyttet til religioner, filosofi, livssyn og etikk</li>
+        <li>analysere og vurdere ulike kilder til kunnskap om religioner, livssyn og etikk</li>
+        <li>utforske og reflektere over eksistensielle spørsmål og svar</li>
+        <li>ta andres perspektiv og håndtere meningsbrytning om religion, livssyn og verdispørsmål</li>
+      </ul>
+    </div>
+    <p>Bruk menyen til venstre (eller ☰ på mobil) for å hoppe rett til et delkapittel. Under «Oppgaver + fasit» finner du alle oppgavene fra oppgavesettet, med fullstendige svar skjult bak «Vis fasit» — prøv å svare selv først!</p>
+  </section>
+
+  <section class="section" id="del-a">
+    <h2>A. Livssyn og eksistensielle spørsmål</h2>
+    <p>Før vi kan snakke om religion spesifikt, må vi forstå det videre begrepet livssyn. Alle mennesker har et livssyn, enten de har tenkt bevisst gjennom det eller ikke – det er den grunnleggende måten vi forstår virkeligheten, mennesket og etikken på.</p>
+    <div class="box">
+      <div class="box-title">Viktig – definisjon</div>
+      <p>Et livssyn er et menneskes syn på virkeligheten, mennesket og etikk. Religion er én type livssyn (et religiøst livssyn), men ikke alle livssyn er religiøse.</p>
+    </div>
+    <h3>Eksistensielle spørsmål</h3>
+    <p>Et livssyn gir – eksplisitt eller implisitt – svar på det vi kaller eksistensielle spørsmål: de store spørsmålene ved det å være menneske, som ikke kan besvares fullt ut med naturvitenskapelige metoder alene.</p>
+    <ul>
+      <li>Finnes det hellige makter?</li>
+      <li>Har mennesket fri vilje?</li>
+      <li>Er mennesket mer verdifullt enn andre levende vesener?</li>
+      <li>Hva er godt og riktig?</li>
+      <li>Hvor kommer alt fra?</li>
+      <li>Hvem er vi? Hvor skal vi?</li>
+      <li>Hvordan bør vi handle?</li>
+    </ul>
+    <p>Legg merke til at disse spørsmålene ikke krever et religiøst svar. Et hvilket som helst livssyn, religiøst eller ikke, må ta stilling til dem.</p>
+    <h3>Religiøse og ikke-religiøse livssyn</h3>
+    <p><strong>Religiøst livssyn:</strong> bygger på at det finnes mer enn det vitenskapen kan beskrive – en dimensjon ved livet som går utover det vi kan sanse og erfare. Eksempler: kristendom og hinduisme.</p>
+    <p><strong>Ikke-religiøst livssyn:</strong> forholder seg til det vitenskap og menneskelig erfaring gir oss kunnskap om. Agnostisisme: vi kan ikke ha sikker kunnskap om det finnes en gud eller ikke. Ateisme: det finnes ingen gud. Eksempler: naturalisme, feminisme, liberalisme, livssynshumanisme.</p>
+    <div class="box grey">
+      <div class="box-title">Eksempel – samme spørsmål, ulikt svar</div>
+      <p>«Hva skjer med oss etter døden?» Kristendom: den som tror på Jesus er frelst og får leve evig. Livssynshumanisme: ingen dokumentasjon på liv etter døden – mennesket lever videre gjennom minner, verdier og handlinger.</p>
+    </div>
+    <div class="box warn">
+      <div class="box-title">Vanlig feil</div>
+      <p>Å tro at «ikke-religiøs» betyr «uten livssyn» – alle har et livssyn. Å blande sammen agnostisisme (vi kan ikke vite) og ateisme (det finnes ingen gud).</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-b">
+    <h2>B. Å definere religion</h2>
+    <p>Å definere religion er overraskende vanskelig. Religion er alltid konkret – det finnes ikke «religion i sin rene form» noe sted, bare konkrete religioner og mennesker som lever ut troen sin. Når vi likevel skal beskrive religion som fenomen på tvers av verden, snakker vi på et generelt nivå – og da blir det vanskelig å samtidig fange det konkrete.</p>
+    <h3>Utenfra- og innenfraperspektiv</h3>
+    <ul>
+      <li><strong>Innenfra:</strong> den troendes eget perspektiv – religiøse handlinger og symboler har en mening/virkelighet som ikke er tilgjengelig for utenforstående.</li>
+      <li><strong>Utenfra:</strong> tilgjengelig for alle, uansett tro – forskerens vanlige ståsted for å kunne sammenligne religioner systematisk.</li>
+    </ul>
+    <p>Utfordringen for den som studerer religion utenfra, er å leve seg inn i religionen samtidig som man beholder et kritisk, analytisk blikk.</p>
+    <h3>To hovedtyper av religionsdefinisjoner</h3>
+    <p>Fordi religion er vanskelig å avgrense presist: <strong>substansielle</strong> definisjoner spør hva religion inneholder, <strong>funksjonelle</strong> definisjoner spør hva religion gjør.</p>
+  </section>
+
+  <section class="section" id="del-c">
+    <h2>C. Substansielle religionsdefinisjoner</h2>
+    <p>Opptatt av innholdet i religionen: finnes det en substans/essens som går igjen i alle religioner?</p>
+    <div class="box">
+      <div class="box-title">Viktig – to klassiske substansielle definisjoner</div>
+      <p><strong>Edward Tylor:</strong> «Religion er tro på åndelige vesener.»<br><strong>Rudolf Otto:</strong> «Religion er møtet med det hellige.»</p>
+    </div>
+    <h3>Gudsbegrepet</h3>
+    <ul>
+      <li><strong>Monoteisme</strong> – tro på én gud.</li>
+      <li><strong>Polyteisme</strong> – tro på flere guder.</li>
+      <li><strong>Panteisme</strong> – gud og natur er ett og det samme.</li>
+      <li><strong>Animisme</strong> – ånder finnes i naturen, gjenstander, dyr og steder.</li>
+    </ul>
+    <h3>Det hellige (Rudolf Otto)</h3>
+    <p>Otto brukte begrepet <em>numinøs</em> (av <em>numen</em>, en ubestemt guddommelig makt) for erfaringen av det hellige, oppsummert i <strong>mysterium tremendum et fascinans</strong>: det hellige skremmer oss samtidig som det tiltrekker oss. Det hellige er «det som er helt annerledes» – opphøyd, skremmende og fascinerende. Det sakrale står i motsetning til det profane (det alminnelige).</p>
+    <h3>Styrker og svakheter</h3>
+    <p><strong>Styrke:</strong> presise, beskriver det spesifikt religiøse. <strong>Svakhet:</strong> for smale og ekskluderende – kan utelukke tradisjoner de fleste vil kalle religiøse.</p>
+    <div class="box warn">
+      <div class="box-title">Vanlig feil</div>
+      <p>Å tro substansielle definisjoner bare handler om «tro på Gud» – Ottos handler om erfaringen av det hellige, ikke nødvendigvis en personlig gud.</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-d">
+    <h2>D. Funksjonelle religionsdefinisjoner</h2>
+    <p>Av nyere dato – ser på hvilke menneskelige behov religion oppfyller, og hvilke virkninger den har for individer, grupper og samfunn. Tydelig utenfra-perspektiv, ofte kritisk.</p>
+    <h3>Funksjoner religion kan ha</h3>
+    <ul>
+      <li>Livsmening og identitet</li>
+      <li>Håp, trøst og tro</li>
+      <li>Forklaringer på konkrete situasjoner</li>
+      <li>Etiske retningslinjer</li>
+      <li>Makt</li>
+    </ul>
+    <p><strong>Fellesskap og tilhørighet:</strong> religion fører mennesker sammen, men kommer ofte med krav om lojalitet/lydighet og kan rettferdiggjøre ulikhet. <strong>Stabilitet og forandring:</strong> religion kan gi støtte til ledere og skape samhold – men kan også ekskludere, hindre demokratisk utvikling, eller føre til politiske omveltninger.</p>
+    <h3>Styrker og svakheter</h3>
+    <p><strong>Styrke:</strong> inkluderende – fenomener utenfor etablerte religioner kan få plass. <strong>Svakhet:</strong> for åpne og vide – religion blir bare det som oppfyller behov.</p>
+    <div class="box">
+      <div class="box-title">Refleksjon – prøv selv</div>
+      <p>Kan en fotballklubb defineres som religion? Tenk gjennom funksjoner (fellesskap, identitet, ritualer, lojalitet) klubben deler med religion, og hva som eventuelt mangler.</p>
+    </div>
+    <p>I dag er det vanlig å kombinere substansielle og funksjonelle definisjoner i stedet for å kreve én definisjon som skal gjelde alt.</p>
+  </section>
+
+  <section class="section" id="del-e">
+    <h2>E. Religiøsitet, religiøs opplevelse og mystikk</h2>
+    <h3>Religiøsitet og religiøs opplevelse</h3>
+    <p>Religiøsitet handler om menneskers religiøse opplevelser, erfaringer og følelser. Vi har bare tilgang til dette gjennom den religiøses egne skildringer, fordi de er subjektive. En religiøs opplevelse er en hendelse som føles som, og blir forstått som, religiøs av den som opplever den.</p>
+    <p>Å stå på et fjell eller kjenne intens kjærlighet kan gi en følelse av noe større – men opplevelsen er ikke i seg selv religiøs. Det er tolkningen som gjør den religiøs. Bønn, salmesang eller lystenning kan gi opplevelse av guddommelig nærvær. For mange er disse erfaringene selve kjernen i religionen.</p>
+    <div class="box">
+      <div class="box-title">Viktig</div>
+      <p>En religiøs opplevelse er subjektiv. Det er tolkningen som gjør en opplevelse religiøs, ikke opplevelsen i seg selv.</p>
+    </div>
+    <h3>Mystikk</h3>
+    <p>En mystisk opplevelse er å plutselig få en forståelse av hvordan verden henger sammen – et enhetlig, «bakenforliggende» prinsipp (det guddommelige/det hellige/en kraft). Mystikeren kan legge til rette for opplevelsen med yoga, bønn, rusmidler, dans eller musikk, men den kan også komme spontant. Å bli ett med det guddommelige kalles ekstase. I Norge finner vi dette blant f.eks. sufier (muslimske mystikere) og pinsevenner.</p>
+    <details class="qa">
+      <summary>Hva er mystikk? Hvorfor er det vanskelig å beskrive en mystisk opplevelse?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Mystikk er den religiøse praksisen/tradisjonen knyttet til å søke og tolke opplevelser av enhet med et guddommelig prinsipp. Det er vanskelig å beskrive fordi opplevelsen er subjektiv og oppleves som å gå utover det hverdagslige, mens språket vårt er bygget for å beskrive den vanlige, sansbare virkeligheten.</div>
+    </details>
+    <details class="qa">
+      <summary>Teknikker som kan fremkalle religiøs ekstase, og hvorfor kan religiøse autoriteter være skeptiske til mystikk?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Teknikker: yoga, bønn, faste, rusmidler, dans, musikk, meditasjon – eller helt spontant. Autoriteter kan være skeptiske fordi mystikeren hevder direkte, personlig tilgang til det guddommelige uten presteskapets/institusjonens mellomledd – dette kan utfordre institusjonens autoritet og tolkningsmonopol.</div>
+    </details>
+  </section>
+
+  <section class="section" id="del-f">
+    <h2>F. Religiøse tekster og myter</h2>
+    <p>Fortellinger er underholdning, men har også skapende kraft – de former identiteten vår. I religion møter vi fortellinger om guder, uhyrer, urhav, verdens undergang og skapelse. Disse fortellingene er både underholdning og skaper av identitet og mening.</p>
+    <h3>Myter</h3>
+    <div class="box">
+      <div class="box-title">To ulike betydninger av «myte»</div>
+      <p><strong>Dagligtale:</strong> noe usant – en fordom eller falsk forestilling.<br><strong>Religionsfaget:</strong> en fortelling knyttet til det guddommelige/overnaturlige. Oppleves som sann for den troende, og har en type sannhet for alle – mytene er kraftfulle historier og viktige kilder til kunnskap om religionene.</p>
+    </div>
+    <p>Mange religiøse fortellinger og læresetninger er samlet i hellige skrifter, som Koranen, Bibelen og Guru Granth Sahib.</p>
+    <details class="qa">
+      <summary>Forklar begrepet «myte», og hvilke utfordringer ligger i å bruke det?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Myte = en fortelling knyttet til det guddommelige/overnaturlige i en religion. Utfordring: ordet har en nedsettende dagligdags betydning (usant/fordom), så religiøse mennesker vil sjelden bruke det om sin egen tro – bruk av begrepet kan lett oppleves respektløst, selv om det er nøytralt fagspråk.</div>
+    </details>
+    <details class="qa">
+      <summary>Gi eksempler på myter (religiøse og ikke-religiøse) og hellige skrifter</summary>
+      <div class="fasit"><strong>Fasit:</strong> Religiøse myter: skapelsesberetningen i 1. Mosebok, Noahs ark, Buddhas opplysning. Ikke-religiøse: nasjonale grunnleggelsesfortellinger, «den amerikanske drømmen». Hellige skrifter: Bibelen, Koranen, Guru Granth Sahib, Toraen, Veda-skriftene – disse er for de troende mer enn «bare myter»: bærere av sannhet, åpenbaring og livsnormer.</div>
+    </details>
+  </section>
+
+  <section class="section" id="del-g">
+    <h2>G. Ritualer</h2>
+    <p>En ung kvinne kneler på et bønneteppe. Hun utfører bønnen på samme måte hver kveld, sier rytmisk fram de samme ordene i samme faste rekkefølge. Hun gjennomfører et religiøst ritual: hun ber. Gjennom bønnen kommuniserer hun med det guddommelige.</p>
+    <div class="box">
+      <div class="box-title">Viktig – hva kjennetegner et ritual?</div>
+      <ul>
+        <li>En fast, gjentagende handling utført på en bestemt måte.</li>
+        <li>Ofte knyttet til bestemte tider, steder eller livsoverganger.</li>
+        <li>Skaper opplevd forbindelse til det hellige og til fellesskapet.</li>
+      </ul>
+    </div>
+    <div class="box grey">
+      <div class="box-title">Eksempel</div>
+      <p>Nattverden i kristendommen: utenfra en seremoni med brød og vin. Innenfra, for den troende, et møte med noe hellig og virkelig – ikke bare et symbol.</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-h">
+    <h2>H. Det materielle og estetikken</h2>
+    <div class="box">
+      <div class="box-title">Viktig – definisjon</div>
+      <p>Estetikk er det som påvirker sansene våre: syn, hørsel, berøring, smak og lukt.</p>
+    </div>
+    <p>Estetikk i religion kan være billedkunst, skulptur, musikk og arkitektur. Hellig lyd og duft er estetiske uttrykk. Det gjelder også alt forbundet med det hellige: hellige tekster, mat, bønnekranser, symboler, amuletter, og hellige naturformasjoner (fjell, foss, hellig tre).</p>
+    <details class="qa">
+      <summary>Eksempler på estetiske uttrykk, og hvordan kan estetikken si oss noe om religioner?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Kirkearkitektur/ikoner (kristendom), kalligrafi/moskéarkitektur (islam), tempelskulptur/røkelse (hinduisme/buddhisme), bønnesjal/menora (jødedom). Estetikken viser konkret hva en religion opplever som hellig eller viktig, og gjør religionen sanselig tilgjengelig – en viktig kilde til kunnskap om religionens verdier, ikke bare utsmykning.</div>
+    </details>
+  </section>
+
+  <section class="section" id="del-i">
+    <h2>I. Sosial organisering</h2>
+    <p>Over hele verden møtes mennesker til religiøse fellesskap: gudshus, forsamlingshus, bedehus, koranskoler, bønnegrupper hjemme. De møtes for bønn, tilbedelse, meditasjon, undervisning, leksehjelp eller sosialt arbeid. Familien kan også være et viktig religiøst fellesskap.</p>
+    <details class="qa">
+      <summary>Eksempler på religiøse fellesskap, og hvorfor er sosialt fellesskap ofte viktig?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Menigheten (kristendom), moskeen/umma (islam), synagogen (jødedom), sangha (buddhisme). Fellesskapet gir opplæring, sosial støtte og identitet – troen deles og leves ut sammen med andre, ikke bare privat.</div>
+    </details>
+    <details class="qa">
+      <summary>Hvordan kan religiøse fellesskap skille ulike grupper?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Klesregler eller matregler skiller medlemmer fra ikke-medlemmer, forventning om giftermål innad, og et sterkt sammensveiset fellesskap kan oppleves ekskluderende utenfra.</div>
+    </details>
+  </section>
+
+  <section class="section" id="del-j">
+    <h2>J. Virkelighetsoppfatning og menneskesyn</h2>
+    <h3>Virkelighetsoppfatning</h3>
+    <p>Vi opplever og forklarer virkeligheten forskjellig. Et sentralt skille går mellom en verdslig/sekulær og en religiøs virkelighetsoppfatning.</p>
+    <p><strong>Verdslig/sekulær:</strong> bare den fysiske virkeligheten vitenskapen kan forklare, regnes som virkelig. Ateist: fornekter at det finnes en gud. Agnostiker: vi har ikke sikker kunnskap om hvorvidt gud finnes.</p>
+    <p><strong>Religiøs:</strong> det finnes guder og overnaturlige vesener som kan gripe inn i livene våre. Henger ofte sammen med et historiesyn:</p>
+    <ul>
+      <li><strong>Lineært historiesyn:</strong> en gud skapte verden og tiden ut fra ingenting; det ene øyeblikket følger det andre til det tar slutt. (Kristendom, jødedom, islam.)</li>
+      <li><strong>Syklisk historiesyn:</strong> verden blir til og går under, om og om igjen. Henger sammen med reinkarnasjon. (Hinduisme, buddhisme.)</li>
+    </ul>
+    <h3>Menneskesyn</h3>
+    <p>Har mennesket fri vilje? Hva skjer med oss etter døden? <strong>Kristendommen i Norge:</strong> den som tror på Jesus er frelst og får leve evig. <strong>Buddhisme:</strong> begjær og hat binder mennesket til en sirkel av gjenfødelser (samsara); målet er å frigjøre seg (nirvana). Ikke-religiøse kan stille lignende spørsmål med annet utgangspunkt: demokrati/menneskerettigheter kan sette mennesket fritt fra undertrykkelse, sosialisme fra fattigdom.</p>
+    <div class="box warn">
+      <div class="box-title">Vanlig feil</div>
+      <p>Å blande lineært/syklisk historiesyn med «riktig»/«feil» – de er to internt konsistente måter å forstå tid på.</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-k">
+    <h2>K. Etikk</h2>
+    <p>Alle religioner har en etikk – en lære om riktig og galt. Mange har en variant av «den gylne regel»: Gjør mot andre som du vil at andre skal gjøre mot deg.</p>
+    <p>Hellige tekster inneholder ofte motsigelser. Skal verdiene (som den gylne regel) veie tyngst, eller er alle regler like viktige? Dette gjør religiøs etikk til et tolkningsspørsmål – en viktig grunn til at det finnes svært ulike etiske retninger innenfor samme religion.</p>
+    <div class="box">
+      <div class="box-title">Refleksjon</div>
+      <p>Tenk på et eksempel der to bud i en hellig tekst kan komme i konflikt. Hvordan avgjør en troende hvilken regel som veier tyngst?</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-l">
+    <h2>L. Religion i det moderne Norge</h2>
+    <h3>Sekularisering</h3>
+    <p>Blir religion mindre viktig i Norge? Ikke så enkelt å svare på. Sekularisering betyr at religion mister innflytelse over enkeltmennesker, kultur eller samfunn, på tre nivåer:</p>
+    <ul>
+      <li><strong>Samfunnsnivå:</strong> religiøse autoriteter/normer mister dominerende posisjon (f.eks. skille stat/kirke).</li>
+      <li><strong>Organisasjonsnivå:</strong> skoler/hjelpeorganisasjoner blir mindre religiøst orienterte.</li>
+      <li><strong>Individnivå:</strong> folk praktiserer/tror mindre og er sjeldnere medlem av et trossamfunn.</li>
+    </ul>
+    <p>Fram til 2012 var evangelisk-luthersk kristendom statens offisielle religion – nå har vi ingen statskirke (sekularisering på samfunnsnivå). På individnivå er bildet mer sammensatt: medlemstall og tro på Gud/liv etter døden synker, men spør man om tro på en høyere makt, reinkarnasjon eller mirakler, synker ikke antallet religiøse like mye. Dette kalles «å tro uten å tilhøre» (believing without belonging).</p>
+    <h3>Globalisering</h3>
+    <p>Norge er del av en globalisert verden der mennesker og ideer flytter seg raskt. Globalisering fører til at religioner sprer seg fra sine opprinnelsesområder, og Norge har i dag et større religiøst mangfold enn tidligere.</p>
+    <h3>Nasjonale minoriteter og urfolk i Norge</h3>
+    <div class="box">
+      <div class="box-title">Viktig</div>
+      <p><strong>Urfolk i Norge:</strong> samene (Sametinget har uttalt at samene ikke ønsket minoritetsstatus, siden de allerede har urfolk-status).<br><strong>De fem nasjonale minoritetene:</strong> jøder, kvener/norskfinner, skogfinner, rom (sigøynere) og romanifolket/tatere – fikk status i 1998 (Europarådets rammekonvensjon).</p>
+    </div>
+    <p>Norges forpliktelser: sikre likhet for loven og forby diskriminering, støtte minoritetsspråk (kvensk, romanes, romani) gjennom utdanning og kultur, og legge til rette for bevaring av tradisjon, religion og kultur.</p>
+    <details class="qa">
+      <summary>Hva vil det si å være urfolk / en nasjonal minoritet, og hvilken rolle spiller religion for gruppene?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Urfolk = folkegruppe med opprinnelig, sammenhengende tilknytning til et område fra før statsdannelsen (i Norge: samene). Nasjonal minoritet = folkegruppe med langvarig historisk tilknytning, men uten egen stat, med egen vernestatus. Religion har for flere grupper (særlig jødene) vært en sentral identitetsmarkør – og historisk grunnlag for forfølgelse. For andre (kvener, skogfinner) har språk/kultur vært vel så sentralt.</div>
+    </details>
+  </section>
+
+  <section class="section" id="del-m">
+    <h2>M. Fundamentalisme</h2>
+    <p>Fundamentalister er religiøse ledere/troende i bevegelser som opplever at de eier den ene, grunnleggende sannheten om gud – gudgitt og den eneste veien til frelse.</p>
+    <div class="box">
+      <div class="box-title">Viktig</div>
+      <p>Fundamentalisme er en reaksjon på det moderne samfunnet. Når fornuft og vitenskap blir idealet og religionen mister makt, gjør fundamentalister aktiv motstand mot denne sekulariseringen. De arbeider for å opprettholde tradisjonelt samfunn og familiestruktur, med bokstavelig lesning av hellige tekster.</p>
+    </div>
+    <div class="box warn">
+      <div class="box-title">Vanlig misforståelse</div>
+      <p>Fundamentalisme sammenliknes ofte med ekstremisme – dette er feil. Fundamentalisme handler om bokstavelig skrifttolkning og motstand mot sekularisering, ikke nødvendigvis voldsbruk.</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-n">
+    <h2>N. Hvordan jobbe med religion, livssyn og etikk?</h2>
+    <h3>Verktøy 1: Utenfra eller innenfra?</h3>
+    <p>Vær bevisst på hvor kunnskapen din om en religion kommer fra: er du selv medlem (innenfra), eller kjenner du praksisen gjennom observasjon/andrehåndskilder (utenfra – vårt faglige ståsted)? Samtidig gir det å bare se en religion utenfra et ufullstendig bilde. Bruk <strong>empatisk innlevelse</strong>: forestill deg hvordan det er å være den andre, bygget på kunnskap og bevissthet om din egen måte å se verden på.</p>
+    <h3>Verktøy 2: Faglig nøytralitet</h3>
+    <p>Målet i faget er forståelse av religion, ikke forsvar eller argumentasjon mot. Faget er verken religiøst eller antireligiøst – vi tar ikke stilling til om religionene er sanne. I religionene finnes dimensjoner (usynlige vesener m.m.) som ikke kan bekreftes/avkreftes vitenskapelig – faget forholder seg nøytralt til selve sannhetsspørsmålet.</p>
+    <div class="box warn">
+      <div class="box-title">Vanlig feil</div>
+      <p>Å skrive argumenterende for/mot en religion på eksamen i stedet for å beskrive og analysere saklig.</p>
+    </div>
+  </section>
+
+  <section class="section" id="del-o">
+    <h2>O. Religionskritikk</h2>
+    <p>Religionskritikk er ikke nytt, og betyr ikke nødvendigvis å være negativ til religion. Det handler om å granske en religiøs praksis eller teori, og vurdere om den er positiv, nøytral eller negativ.</p>
+    <div class="box">
+      <div class="box-title">Viktig</div>
+      <p>Kritikk er viktig for å problematisere vedtatte sannheter, kan sette i gang endringsprosesser og føre til god dialog – men krever at man skiller saklig kritikk fra sjikane, og er åpen for andres perspektiv.</p>
+    </div>
+    <h3>Innenfra-perspektiv: intern religionskritikk</h3>
+    <p>Kritikk fra troende medlemmer selv – fører ofte til endring og handling. Jesus, Muhammed og Buddha var alle religionskritikere i sin tid, og religionskritikken deres skapte nye religioner. Det store skismaet (1054) og Martin Luthers reformasjon er eksempler på splittelse som følge av intern kritikk. Også fundamentalisme og religiøs modernisering er former for intern kritikk – bare med motsatt retning.</p>
+    <h3>Utenfra-perspektiv: ekstern/filosofisk religionskritikk</h3>
+    <div class="box">
+      <div class="box-title">Fire klassiske religionskritikere</div>
+      <p><strong>Feuerbach:</strong> Gud er en projeksjon av menneskets ønsker og behov.<br>
+      <strong>Marx:</strong> Religion er «opium for folket» – trøst som dysser ned kritikk av urettferdighet.<br>
+      <strong>Nietzsche:</strong> «Gud er død» – uten Gud står mennesket friere til å se sine egne verdier.<br>
+      <strong>Freud:</strong> Gud er en mestringsstrategi; religion er nært knyttet til nevrose.</p>
+    </div>
+    <details class="qa">
+      <summary>Hva er problemet med disse to religionsdefinisjonene: «Religion er tro på åndelige vesener» og «Religion er hva et individ gjør med ensomheten sin»?</summary>
+      <div class="fasit"><strong>Fasit:</strong> Den første (substansiell, Tylor) er for smal – utelukker retninger uten tydelig gudetro. Den andre (funksjonell) er for vid og subjektiv – kan omfatte nesten hva som helst, og sier ingenting spesifikt religiøst.</div>
+    </details>
+  </section>
+
+  <section class="section" id="pugging">
+    <h2>Flashcards – pugg begreper, personer og fakta</h2>
+    <p>Klikk på kortet for å snu det. Bruk «Kan denne» for å markere kort du mestrer – fremgangen din lagres i nettleseren og består til neste besøk.</p>
+    <div id="flashwrap">
+      <div class="fc-scene">
+        <div class="fc-card" id="fcCard">
+          <div class="fc-face fc-front" id="fcFront"></div>
+          <div class="fc-face fc-back" id="fcBack"></div>
+        </div>
+      </div>
+      <div class="fc-progress" id="fcProgress"></div>
+      <div class="fc-controls">
+        <button id="fcPrev">&larr; Forrige</button>
+        <button id="fcFlip" class="primary">Snu kortet</button>
+        <button id="fcNext">Neste &rarr;</button>
+      </div>
+      <div class="fc-controls">
+        <button id="fcShuffle">Stokk om</button>
+        <button id="fcKnown">✓ Kan denne</button>
+        <button id="fcReset">Nullstill fremgang</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="oppgaver">
+    <h2>Oppgaver til Del 1 – med fasit</h2>
+    <p>Alle oppgavene under er hentet fra oppgavesettet. Prøv å svare selv før du trykker «Vis fasit».</p>
+
+    <h3>Substansielle og funksjonelle religionsdefinisjoner</h3>
+    <details class="qa"><summary>Hvor vil du plassere følgende definisjon: «Religion kommer til uttrykk gjennom kulturelle tradisjoner, kunst, massemediene, politikk og samfunnsliv»?</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – den beskriver hvor/hvordan religion viser seg i samfunnet (funksjon/uttrykk), ikke hva religionen i sin kjerne inneholder av tro.</div></details>
+    <details class="qa"><summary>«Religion gir følelse av identitet både for grupper og enkeltmennesker. Denne identiteten kan fungere som en markør mot dem som ikke tilhører egen religion.»</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – legger vekt på religionens sosiale funksjon (identitet, gruppetilhørighet), ikke på trosinnholdet.</div></details>
+    <details class="qa"><summary>«Religion er troen på åndelige vesener»</summary><div class="fasit"><strong>Fasit:</strong> Substansiell definisjon (Edward Tylors klassiske definisjon) – handler om hva religionen inneholder (tro på ånder/guder).</div></details>
+    <details class="qa"><summary>«Religion gir mennesket en opplevelse av mening og hensikt med tilværelsen»</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – ser på hvilket behov (mening) religion oppfyller.</div></details>
+    <details class="qa"><summary>«Religiøs etikk bidrar til at tilhengernes atferd er regulert av definerte normer og idealer»</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – religionens funksjon som etisk regulator av atferd.</div></details>
+    <details class="qa"><summary>«Religion er enkeltmenneskets følelser, handlinger og opplevelser i det de søker å forholde seg til det de selv forstår som guddommelig»</summary><div class="fasit"><strong>Fasit:</strong> Substansiell definisjon (minner om William James) – knyttet til det guddommelige som innhold, selv om den også vektlegger den subjektive opplevelsen.</div></details>
+    <details class="qa"><summary>«Religion er møtet med det hellige i dets ulike aspekter. Det hellige er knyttet til en oversanselig virkelighet og framtrer radikalt annerledes enn den verden man opplever til daglig»</summary><div class="fasit"><strong>Fasit:</strong> Substansiell definisjon (Rudolf Otto) – definerer religion ut fra innholdet: møtet med det hellige/numinøse.</div></details>
+    <details class="qa"><summary>«Religion bidrar til å fylle menneskets behov for kunnskap og trøst i møte med andres og egen død»</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – religionens funksjon som trøst/mestring i møte med død.</div></details>
+
+    <h3>Mystikk</h3>
+    <details class="qa"><summary>Hva er mystikk?</summary><div class="fasit"><strong>Fasit:</strong> En mystisk opplevelse er en plutselig forståelse av at alt henger sammen gjennom et enhetlig, «bakenforliggende» prinsipp (det guddommelige/det hellige/en kraft). Mystikk er den religiøse tradisjonen og praksisen knyttet til å søke og tolke slike opplevelser.</div></details>
+    <details class="qa"><summary>Hvorfor er det vanskelig å beskrive en mystisk opplevelse?</summary><div class="fasit"><strong>Fasit:</strong> Opplevelsen er subjektiv og oppleves som å gå utover det hverdagslige og sansbare, mens språket vårt i stor grad er bygget for å beskrive den vanlige, sansbare virkeligheten.</div></details>
+    <details class="qa"><summary>Nevn noen teknikker som kan fremkalle religiøs ekstase</summary><div class="fasit"><strong>Fasit:</strong> Yoga, bønn, faste, rusmidler, dans, musikk/sang og meditasjon. Opplevelsen kan også komme spontant, uten forberedelse.</div></details>
+    <details class="qa"><summary>Hvorfor tror du mange religiøse ledere og autoriteter kan være skeptiske til mystikk?</summary><div class="fasit"><strong>Fasit:</strong> Mystikeren hevder å ha direkte, personlig tilgang til det guddommelige uten å gå veien om presteskapet eller institusjonens offisielle tolkning. Det kan oppleves som en utfordring av institusjonens autoritet og tolkningsmonopol.</div></details>
+
+    <h3>Myte</h3>
+    <details class="qa"><summary>Forklar begrepet «myte»</summary><div class="fasit"><strong>Fasit:</strong> En fortelling knyttet til det guddommelige/overnaturlige i en religion, som oppleves som sann av den troende og gir mening og identitet.</div></details>
+    <details class="qa"><summary>Hvilke utfordringer ligger det i å bruke begrepet «myte»?</summary><div class="fasit"><strong>Fasit:</strong> Ordet har en nedsettende dagligdags betydning (noe usant/en fordom), så religiøse mennesker vil sjelden bruke det selv om sin egen tro – bruken kan lett oppleves respektløst, selv om det er nøytralt fagspråk i religionsvitenskapen.</div></details>
+    <details class="qa"><summary>Gi eksempler på myter du kjenner, både religiøse og ikke-religiøse</summary><div class="fasit"><strong>Fasit:</strong> Religiøse: skapelsesberetningen i 1. Mosebok, historien om Noahs ark, fortellingen om Buddhas opplysning. Ikke-religiøse: nasjonale grunnleggelsesfortellinger, «den amerikanske drømmen» som kulturell fortelling.</div></details>
+    <details class="qa"><summary>Gi eksempler på hellige skrifter du kjenner til. Er disse kun myter?</summary><div class="fasit"><strong>Fasit:</strong> Bibelen, Koranen, Guru Granth Sahib, Toraen, Veda-skriftene. De er ikke «kun myter» i dagligdags forstand – for de troende er de bærere av sannhet, åpenbaring og livsnormer, selv om noen inneholder mytisk stoff i religionsfaglig forstand.</div></details>
+
+    <h3>Ritualer</h3>
+    <details class="qa"><summary>Gjør oppgave 11 side 52 i læreboka Religion og etikk</summary><div class="fasit"><strong>Merk:</strong> Denne oppgaven er knyttet direkte til en konkret oppgavetekst på side 52 i læreboka – slå opp der for oppgaveteksten, og bruk teorien i Del G (Ritualer) i dette notatet: hva kjennetegner et ritual, og hvilken forskjell er det på et ritual sett utenfra og innenfra.</div></details>
+
+    <h3>Det materielle og estetikken</h3>
+    <details class="qa"><summary>Hva er estetikk?</summary><div class="fasit"><strong>Fasit:</strong> Det som påvirker sansene våre – syn, hørsel, berøring, smak og lukt.</div></details>
+    <details class="qa"><summary>Gi eksempler på estetiske uttrykk i ulike religioner</summary><div class="fasit"><strong>Fasit:</strong> Kirkearkitektur og ikoner (kristendom), kalligrafi og moskéarkitektur (islam), tempelskulptur og røkelse (hinduisme/buddhisme), bønnesjal og menoraer (jødedom), hellig musikk og sang i de fleste tradisjoner.</div></details>
+    <details class="qa"><summary>På hvilke måter kan estetikken si oss noe om religioner?</summary><div class="fasit"><strong>Fasit:</strong> Estetiske uttrykk viser konkret hva en religion opplever som hellig eller viktig, og gjør religionen sanselig tilgjengelig for den troende – estetikken er en viktig kilde til kunnskap om religionens verdier, ikke bare utsmykning.</div></details>
+
+    <h3>Sosial organisering</h3>
+    <details class="qa"><summary>Gi eksempler på ulike religiøse fellesskap</summary><div class="fasit"><strong>Fasit:</strong> Menigheten (kristendom), moskeen/umma (islam), synagogen (jødedom), sangha – klosterfellesskapet (buddhisme), samt uformelle fellesskap som bønnegrupper hjemme.</div></details>
+    <details class="qa"><summary>Hvorfor er sosialt fellesskap ofte svært viktig i en religion?</summary><div class="fasit"><strong>Fasit:</strong> Fellesskapet gir opplæring i tekster og praksis, sosial støtte og identitet, og er stedet der ritualer ofte utføres sammen med andre – troen blir noe man deler og lever ut sammen.</div></details>
+    <details class="qa"><summary>Gi eksempler på hvordan religiøse fellesskap ofte skiller ulike grupper</summary><div class="fasit"><strong>Fasit:</strong> Klesregler eller matregler skiller medlemmer fra ikke-medlemmer, forventning om giftermål innad i trossamfunnet, og at et sterkt sammensveiset fellesskap kan oppleves ekskluderende utenfra.</div></details>
+
+    <h3>Religion i det moderne Norge</h3>
+    <details class="qa"><summary>Forklar teorien om sekularisering, og si litt om hvordan dette passer med det norske samfunnet</summary><div class="fasit"><strong>Fasit:</strong> Sekulariseringsteorien sier at religion mister innflytelse i takt med at samfunnet blir mer moderne og vitenskapsbasert. Dette stemmer på samfunnsnivå i Norge (ingen statskirke siden 2012, religion mindre synlig i det offentlige), men bildet er mer sammensatt på individnivå: medlemstall i Den norske kirke synker, men tro på en høyere makt/reinkarnasjon/mirakler synker mindre – «å tro uten å tilhøre».</div></details>
+    <details class="qa"><summary>Hvordan har globaliseringen påvirket det religiøse Norge?</summary><div class="fasit"><strong>Fasit:</strong> Globalisering har ført til at religioner sprer seg fra sine opprinnelsesområder gjennom migrasjon, reising, internett og medier – Norge har i dag et langt større religiøst og livssynsmessig mangfold enn tidligere.</div></details>
+    <details class="qa"><summary>I Norge har vi 5 nasjonale minoriteter og en urbefolkning (bruk gjerne s. 372–381 i læreboka). Hva vil det si å være et urfolk? Hvem er urfolket i Norge?</summary><div class="fasit"><strong>Fasit:</strong> Et urfolk er en folkegruppe med lang, sammenhengende historisk tilknytning til et område fra før statsdannelsen, med egen kultur, språk og samfunnsstruktur. I Norge er samene urfolket.</div></details>
+    <details class="qa"><summary>Hva er en nasjonal minoritet? Hvilke nasjonale minoriteter har vi i Norge?</summary><div class="fasit"><strong>Fasit:</strong> En nasjonal minoritet er en folkegruppe med langvarig historisk tilknytning til landet, men uten egen stat, med egen folkerettslig vernestatus. Norges fem nasjonale minoriteter: jøder, kvener/norskfinner, skogfinner, rom (sigøynere) og romanifolket/tatere.</div></details>
+    <details class="qa"><summary>Hvilken rolle spiller religion for disse gruppene? Hvilke forpliktelser har Norge overfor dem?</summary><div class="fasit"><strong>Fasit:</strong> Religion har for flere grupper (særlig jødene) vært en sentral del av gruppeidentiteten og et kjennetegn som historisk har gjort dem til mål for forfølgelse. For andre (kvener, skogfinner) har språk og kultur vært vel så sentralt. Norges forpliktelser: sikre likhet for loven og forby diskriminering, støtte minoritetsspråk gjennom utdanning/kultur, legge til rette for bevaring av tradisjon/religion/kultur, og rapportere jevnlig til Europarådet.</div></details>
+  </section>
+
+  <section class="section" id="kompetanse">
+    <h2>Kobling til kompetansemål</h2>
+    <h3>Gjøre rede for og drøfte sentrale fagbegreper</h3>
+    <p>Du må kunne definere og bruke aktivt begreper som livssyn, religion, substansiell/funksjonell religionsdefinisjon, det hellige/profane, numinøs, monoteisme/polyteisme/panteisme/animisme, myte, ritual, estetikk, sekularisering, fundamentalisme og religionskritikk – presist, ikke bare som en liste.</p>
+    <h3>Analysere og vurdere ulike kilder til kunnskap</h3>
+    <p>Du må kunne skille mellom kunnskap utenfra og innenfra, vurdere kilders pålitelighet, og forstå hvorfor myter, ritualer, hellige tekster og estetiske uttrykk alle er kilder til kunnskap om en religion.</p>
+    <h3>Utforske og reflektere over eksistensielle spørsmål</h3>
+    <p>Du må kunne vise at ulike livssyn gir ulike svar på de samme grunnleggende spørsmålene, og sammenligne disse svarene saklig.</p>
+    <h3>Ta andres perspektiv og håndtere meningsbrytning</h3>
+    <p>Du må vise empatisk innlevelse: gjengi en posisjon på dens egne premisser selv om du er uenig, og skille saklig kritikk fra sjikane.</p>
+  </section>
+
+  <section class="section" id="sjekkliste">
+    <h2>Sjekkliste – test deg selv</h2>
+    <p>Kryss av for det du kan forklare uten å se i notatet. Fremgangen din lagres automatisk i nettleseren.</p>
+    <div class="checklist" id="checklist"></div>
+  </section>
+
+  <section class="section" id="feil">
+    <h2>Vanlige eksamensfeil for dette temaet</h2>
+    <ul>
+      <li>Å beskrive bare én religionsdefinisjon (ofte bare den substansielle) uten å vise at man kjenner begge hovedtypene.</li>
+      <li>Å bruke «myte» i dagligdags, nedsettende betydning i en fagtekst.</li>
+      <li>Å blande sammen fundamentalisme og ekstremisme/terrorisme.</li>
+      <li>Å skrive argumenterende for eller mot en religion i stedet for å beskrive og drøfte saklig og nøytralt.</li>
+      <li>Å blande sammen intern religionskritikk (fra troende selv) og ekstern/filosofisk religionskritikk (utenfra).</li>
+      <li>Å presentere sekularisering som en enkel, lineær nedgang uten nyanser.</li>
+      <li>Å blande sammen nasjonal minoritet og urfolk, eller glemme at samene selv valgte urfolk-status.</li>
+      <li>Å drøfte uten konkrete eksempler.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="ordliste">
+    <h2>Ordliste</h2>
+    <ul>
+      <li><strong>Livssyn</strong> – et menneskes syn på virkeligheten, mennesket og etikk.</li>
+      <li><strong>Eksistensielle spørsmål</strong> – de store spørsmålene ved det å være menneske.</li>
+      <li><strong>Utenfra-/innenfraperspektiv</strong> – å beskrive en religion fra utsiden eller fra innsiden (den troendes egen opplevelse).</li>
+      <li><strong>Substansiell religionsdefinisjon</strong> – legger vekt på religionens innhold.</li>
+      <li><strong>Funksjonell religionsdefinisjon</strong> – legger vekt på hvilken funksjon religion har.</li>
+      <li><strong>Det hellige/numinøs</strong> – Ottos begrep for religionens kjerne: noe skremmende og fascinerende, «helt annerledes» enn hverdagen.</li>
+      <li><strong>Monoteisme/polyteisme/panteisme/animisme</strong> – tro på én gud / flere guder / at gud og natur er ett / at ånder finnes i naturen og gjenstander.</li>
+      <li><strong>Religiøs opplevelse</strong> – en subjektiv hendelse som den troende selv tolker som religiøs.</li>
+      <li><strong>Mystikk</strong> – religiøs praksis knyttet til å oppleve enhet med et guddommelig prinsipp; ekstase er å bli ett med dette.</li>
+      <li><strong>Myte</strong> – en fortelling knyttet til det guddommelige/overnaturlige; oppleves som sann av den troende.</li>
+      <li><strong>Ritual</strong> – en fast, gjentagende religiøs handling.</li>
+      <li><strong>Estetikk</strong> – det som påvirker sansene våre; i religion: kunst, arkitektur, musikk, symboler.</li>
+      <li><strong>Sekularisering</strong> – at religion mister innflytelse over enkeltmennesker, kultur eller samfunn.</li>
+      <li><strong>Believing without belonging</strong> – å tro uten å delta aktivt i et trossamfunn.</li>
+      <li><strong>Nasjonal minoritet</strong> – folkegruppe med historisk tilknytning og egen vernestatus (i Norge: jøder, kvener, skogfinner, rom, romanifolket/tatere).</li>
+      <li><strong>Urfolk</strong> – folkegruppe med opprinnelig tilknytning til et område fra før statsdannelsen (i Norge: samene).</li>
+      <li><strong>Fundamentalisme</strong> – religiøs retning som hevder å eie den bokstavelige sannheten, i motstand mot sekularisering.</li>
+      <li><strong>Religionskritikk</strong> – å granske og vurdere religiøs praksis/teori; intern (fra troende) og ekstern/filosofisk (utenfra) kritikk.</li>
+      <li><strong>Dogme</strong> – en læresetning som regnes som absolutt sann og ikke skal betviles.</li>
+      <li><strong>Trosbekjennelse</strong> – en formell erklæring av hva en religion/trosretning tror på.</li>
+      <li><strong>Norm</strong> – en regel eller forventning til atferd.</li>
+      <li><strong>Ånd/engel/demon/djevel</strong> – overnaturlige vesener; engler/demoner er mellomvesener, djevelen er selve ondskapens skikkelse.</li>
+      <li><strong>Sjaman/medium</strong> – formidlere mellom menneskeverdenen og åndeverdenen.</li>
+      <li><strong>Profet/helgen</strong> – en som mottar/formidler guddommelig budskap (profet), eller en spesielt hellig person i en trostradisjon (helgen).</li>
+    </ul>
+  </section>
+
+  </main>
+</div>
+
+<a href="#forside" class="backtotop" aria-label="Til toppen">&uarr;</a>
+
+<script>
+// ---------- Sidebar toggle ----------
+const menuToggle = document.getElementById('menuToggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+function openMenu(){ sidebar.classList.add('open'); overlay.classList.add('show'); }
+function closeMenu(){ sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.contains('open') ? closeMenu() : openMenu();
+});
+overlay.addEventListener('click', closeMenu);
+document.querySelectorAll('#sidebar nav a').forEach(a => {
+  a.addEventListener('click', () => { if (window.innerWidth <= 820) closeMenu(); });
+});
+
+// ---------- Active section highlight ----------
+const navLinks = Array.from(document.querySelectorAll('#sidebar nav a'));
+const sections = navLinks.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = '#' + entry.target.id;
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+    }
+  });
+}, { rootMargin: '-80px 0px -70% 0px', threshold: 0 });
+sections.forEach(s => io.observe(s));
+
+// ---------- Checklist (localStorage) ----------
+const checklistItems = [
+  "Jeg kan forklare hva et livssyn er, og skille mellom religiøse og ikke-religiøse livssyn.",
+  "Jeg kan liste opp minst fire eksistensielle spørsmål.",
+  "Jeg kan forklare skillet mellom utenfra- og innenfraperspektiv, med et eksempel.",
+  "Jeg kan forklare substansielle religionsdefinisjoner, med Tylors og Ottos definisjoner som eksempler.",
+  "Jeg kan forklare Ottos begrep om det hellige (numinøs, mysterium tremendum et fascinans).",
+  "Jeg kan forklare funksjonelle religionsdefinisjoner og nevne minst tre funksjoner religion kan ha.",
+  "Jeg kan drøfte styrker og svakheter ved substansielle og funksjonelle definisjoner, med eget eksempel.",
+  "Jeg kan forklare hva en religiøs opplevelse er, og hvorfor den er subjektiv.",
+  "Jeg kan forklare hva mystikk og ekstase er, med minst to teknikker og to norske eksempler.",
+  "Jeg kan forklare forskjellen på «myte» i dagligtale og i religionsfaget.",
+  "Jeg kan forklare hva et ritual er, og gi et eksempel utenfra og innenfra.",
+  "Jeg kan forklare hva estetikk i religion er, med flere eksempler.",
+  "Jeg kan forklare hvorfor sosialt fellesskap er viktig i religion, og hvordan det kan virke ekskluderende.",
+  "Jeg kan forklare forskjellen på lineært og syklisk historiesyn.",
+  "Jeg kan gi eksempler på religiøse og ikke-religiøse menneskesyn.",
+  "Jeg kan forklare hvorfor religiøs etikk er et tolkningsspørsmål, med eksempel.",
+  "Jeg kan forklare sekulariseringsteorien på tre nivåer, og nevne minst én innvending mot en for enkel nedgangsfortelling.",
+  "Jeg kan forklare skillet mellom nasjonal minoritet og urfolk, og nevne alle fem nasjonale minoriteter i Norge.",
+  "Jeg kan forklare hva fundamentalisme er, og hvorfor det ikke er det samme som ekstremisme.",
+  "Jeg kan forklare hva religionskritikk er, og skille mellom intern og ekstern (filosofisk) religionskritikk.",
+  "Jeg kan nevne og kort forklare Feuerbach, Marx, Nietzsche og Freuds religionskritikk.",
+  "Jeg kan forklare hvorfor faget religion og etikk er metodisk nøytralt, og hva empatisk innlevelse betyr."
+];
+const CL_KEY = 'religion-del1-checklist';
+function loadChecklistState(){ try { return JSON.parse(localStorage.getItem(CL_KEY)) || {}; } catch(e){ return {}; } }
+function saveChecklistState(state){ try { localStorage.setItem(CL_KEY, JSON.stringify(state)); } catch(e){} }
+const clState = loadChecklistState();
+const clContainer = document.getElementById('checklist');
+checklistItems.forEach((text, i) => {
+  const label = document.createElement('label');
+  const input = document.createElement('input');
+  input.type = 'checkbox';
+  input.checked = !!clState[i];
+  const span = document.createElement('span');
+  span.textContent = text;
+  if (input.checked) span.classList.add('done');
+  input.addEventListener('change', () => {
+    clState[i] = input.checked;
+    saveChecklistState(clState);
+    span.classList.toggle('done', input.checked);
+  });
+  label.appendChild(input);
+  label.appendChild(span);
+  clContainer.appendChild(label);
+});
+
+// ---------- Flashcards ----------
+const flashcards = [
+  {q:"Livssyn", a:"Et menneskes syn på virkeligheten, mennesket og etikk."},
+  {q:"Eksistensielle spørsmål", a:"De store spørsmålene ved det å være menneske (mening, død, frihet, godt/ondt osv.)."},
+  {q:"Edward Tylor", a:"«Religion er tro på åndelige vesener» – klassisk substansiell religionsdefinisjon."},
+  {q:"Rudolf Otto", a:"«Religion er møtet med det hellige» – substansiell definisjon; opphavsmann til begrepet det numinøse."},
+  {q:"Numinøs", a:"Ottos begrep for erfaringen av det hellige – noe «helt annerledes» enn hverdagen."},
+  {q:"Mysterium tremendum et fascinans", a:"Det hellige skremmer oss (tremendum) samtidig som det tiltrekker oss (fascinans)."},
+  {q:"Monoteisme", a:"Tro på én gud."},
+  {q:"Polyteisme", a:"Tro på flere guder."},
+  {q:"Panteisme", a:"Troen på at gud og naturen/verden er ett og det samme."},
+  {q:"Animisme", a:"Troen på at ånder finnes i naturen, gjenstander, dyr og steder."},
+  {q:"Substansiell religionsdefinisjon", a:"Definisjon som legger vekt på religionens innhold (f.eks. tro på åndelige vesener/det hellige)."},
+  {q:"Funksjonell religionsdefinisjon", a:"Definisjon som legger vekt på hvilken funksjon religion har for mennesker og samfunn."},
+  {q:"Ekstase", a:"Å bli ett med det guddommelige – mystikerens mål, kan fremkalles ved yoga, bønn, faste, dans, musikk m.m."},
+  {q:"Sufier", a:"Muslimske mystikere."},
+  {q:"Myte (fagbegrep)", a:"En fortelling knyttet til det guddommelige/overnaturlige i en religion, oppleves som sann av den troende."},
+  {q:"Ritual", a:"En fast, gjentagende religiøs handling, ofte knyttet til bestemte tider, steder eller livsoverganger."},
+  {q:"Estetikk", a:"Det som påvirker sansene våre: syn, hørsel, berøring, smak og lukt."},
+  {q:"Lineært historiesyn", a:"En gud skapte verden og tiden ut fra ingenting; tiden går fra start til slutt (kristendom, jødedom, islam)."},
+  {q:"Syklisk historiesyn", a:"Verden blir til og går under, om og om igjen – henger sammen med reinkarnasjon (hinduisme, buddhisme)."},
+  {q:"Den gylne regel", a:"Gjør mot andre som du vil at andre skal gjøre mot deg – finnes i variasjoner i de fleste religioner/livssyn."},
+  {q:"Sekularisering", a:"At religion mister innflytelse over enkeltmennesker, kultur eller samfunn – på samfunns-, organisasjons- og individnivå."},
+  {q:"Believing without belonging", a:"Å tro uten å tilhøre/delta aktivt i et trossamfunn – tro, praksis og medlemskap faller ikke nødvendigvis sammen."},
+  {q:"Urfolk i Norge", a:"Samene."},
+  {q:"Norges fem nasjonale minoriteter", a:"Jøder, kvener/norskfinner, skogfinner, rom (sigøynere) og romanifolket/tatere."},
+  {q:"Fundamentalisme", a:"Religiøs retning som hevder å eie den ene, bokstavelige sannheten om gud, og gjør aktiv motstand mot sekularisering."},
+  {q:"Religionskritikk", a:"Å granske og vurdere en religiøs praksis eller teori – ikke nødvendigvis å avvise religion."},
+  {q:"Intern religionskritikk", a:"Kritikk fra troende medlemmer selv, f.eks. Luther, Jesus, Muhammed, Buddha."},
+  {q:"Ludwig Feuerbach", a:"Gud er en projeksjon av menneskets ønsker og behov."},
+  {q:"Karl Marx", a:"Religion er «opium for folket» – trøst som dysser ned kritikk av sosial urettferdighet."},
+  {q:"Friedrich Nietzsche", a:"«Gud er død» – uten Gud står mennesket friere til å se sine egne verdier."},
+  {q:"Sigmund Freud", a:"Gud er en mestringsstrategi; religion er nært knyttet til nevrose."},
+  {q:"Det store skismaet (1054)", a:"Splittelsen mellom den katolske og den ortodokse kirke, som følge av uenighet om pavens makt."},
+  {q:"Empatisk innlevelse", a:"Å bruke fantasien for å forstå en religion/et livssyn på dets egne premisser, uten selv å måtte tro på det."},
+  {q:"Dogme", a:"En læresetning som regnes som absolutt sann innenfor en religion, og som ikke skal betviles."},
+  {q:"Trosbekjennelse", a:"En formell, ofte offisiell erklæring av hva en religion/trosretning tror på."}
+];
+const FC_KEY = 'religion-del1-flashcards-known';
+function loadKnown(){ try { return new Set(JSON.parse(localStorage.getItem(FC_KEY)) || []); } catch(e){ return new Set(); } }
+function saveKnown(set){ try { localStorage.setItem(FC_KEY, JSON.stringify(Array.from(set))); } catch(e){} }
+let fcOrder = flashcards.map((_, i) => i);
+let fcIndex = 0;
+let fcFlipped = false;
+let fcKnown = loadKnown();
+const fcCard = document.getElementById('fcCard');
+const fcFront = document.getElementById('fcFront');
+const fcBack = document.getElementById('fcBack');
+const fcProgress = document.getElementById('fcProgress');
+function renderCard(){
+  const item = flashcards[fcOrder[fcIndex]];
+  fcFront.textContent = item.q;
+  fcBack.textContent = item.a;
+  fcCard.classList.remove('flipped');
+  fcFlipped = false;
+  const knownCount = fcKnown.size;
+  const isKnown = fcKnown.has(fcOrder[fcIndex]);
+  fcProgress.textContent = `Kort ${fcIndex+1} av ${fcOrder.length} · ${knownCount} markert som kjent` + (isKnown ? ' · ✓ denne kan du' : '');
+}
+function shuffle(arr){
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i+1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+document.getElementById('fcFlip').addEventListener('click', () => {
+  fcFlipped = !fcFlipped;
+  fcCard.classList.toggle('flipped', fcFlipped);
+});
+fcCard.addEventListener('click', () => {
+  fcFlipped = !fcFlipped;
+  fcCard.classList.toggle('flipped', fcFlipped);
+});
+document.getElementById('fcNext').addEventListener('click', () => {
+  fcIndex = (fcIndex + 1) % fcOrder.length;
+  renderCard();
+});
+document.getElementById('fcPrev').addEventListener('click', () => {
+  fcIndex = (fcIndex - 1 + fcOrder.length) % fcOrder.length;
+  renderCard();
+});
+document.getElementById('fcShuffle').addEventListener('click', () => {
+  fcOrder = shuffle(fcOrder.slice());
+  fcIndex = 0;
+  renderCard();
+});
+document.getElementById('fcKnown').addEventListener('click', () => {
+  fcKnown.add(fcOrder[fcIndex]);
+  saveKnown(fcKnown);
+  fcIndex = (fcIndex + 1) % fcOrder.length;
+  renderCard();
+});
+document.getElementById('fcReset').addEventListener('click', () => {
+  fcKnown = new Set();
+  saveKnown(fcKnown);
+  renderCard();
+});
+renderCard();
+</script>
+</body>
+</html>
