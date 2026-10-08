@@ -108,6 +108,19 @@
   .fc-controls button.primary{background:var(--brand);color:#fff;border-color:var(--brand);}
   .fc-progress{font-size:0.85rem;color:var(--muted);}
   .fc-known-badge{font-size:0.8rem;color:#2e7d32;}
+  .fc-filter{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 4px;}
+  .fc-filter-btn{background:#fff;border:1px solid var(--border);border-radius:999px;padding:7px 18px;cursor:pointer;font-size:0.9rem;color:var(--text);font-weight:600;}
+  .fc-filter-btn:hover{background:var(--box-fill);}
+  .fc-filter-btn.active{background:var(--brand);color:#fff;border-color:var(--brand);}
+  /* del-grupper (oppgaver) */
+  details.del-group{margin:22px 0 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff;}
+  details.del-group + details.del-group{margin-top:14px;}
+  details.del-group>summary{cursor:pointer;list-style:none;padding:14px 20px;background:var(--brand);color:#fff;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:space-between;}
+  details.del-group>summary::-webkit-details-marker{display:none;}
+  details.del-group>summary::after{content:'▸';transition:transform .2s;font-weight:400;}
+  details.del-group[open]>summary::after{transform:rotate(90deg);}
+  details.del-group>.del-body{padding:6px 20px 18px;}
+  details.del-group>.del-body>h3:first-child{margin-top:10px;}
   /* misc */
   .quote{font-style:italic;color:var(--muted);}
   hr.soft{border:none;border-top:1px solid var(--border);margin:30px 0;}
@@ -181,6 +194,14 @@
         <li><a href="#k-l">L. Paulus</a></li>
         <li><a href="#k-m">M. Syn på andre religioner</a></li>
         <li><a href="#k-n">N. Viktige begreper</a></li>
+        <li><a href="#k-o">O. Åpenbaring</a></li>
+        <li><a href="#k-p">P. Historiesyn &amp; skapelse</a></li>
+        <li><a href="#k-q">Q. Menneskesyn</a></li>
+        <li><a href="#k-r">R. Synd</a></li>
+        <li><a href="#k-s">S. Kjønn &amp; kjønnsroller</a></li>
+        <li><a href="#k-t">T. Frelse &amp; fremtidshåp</a></li>
+        <li><a href="#k-u">U. Etikk &amp; naturlig lov</a></li>
+        <li><a href="#k-v">V. Normer &amp; verdier</a></li>
         <li class="group-title">Øving</li>
         <li><a href="#pugging">Flashcards</a></li>
         <li><a href="#oppgaver">Oppgaver + fasit</a></li>
@@ -832,9 +853,164 @@
     </div>
   </section>
 
+  <section class="section" id="k-o">
+    <h2>O. Åpenbaring</h2>
+    <p>Kristendommen regnes som en <strong>åpenbaringsreligion</strong>: troen bygger på at Gud selv har åpenbart (vist/avslørt) seg for mennesker, ikke bare på menneskelig filosofisk tenkning. Det skilles mellom to typer åpenbaring:</p>
+    <div class="box">
+      <div class="box-title">To typer åpenbaring</div>
+      <p><strong>Den spesielle åpenbaringen</strong> – Gud åpenbarer seg direkte og personlig gjennom <strong>Jesus</strong>. Dette er den mest konkrete og fullstendige åpenbaringen i kristen tro.<br>
+      <strong>Den allmenne åpenbaringen</strong> – tilgjengelig for alle mennesker, uavhengig av religion: en anelse om at det står en Gud bak alt, som kan oppstå ved undring over å være til, eller ved sterke naturopplevelser.</p>
+    </div>
+    <p>Den allmenne åpenbaringen er viktig i kristen etikk, fordi den er grunnlaget for tanken om at alle mennesker – troende eller ikke – kan ane noe om rett og galt (se <a href="#k-u">avsnitt U om naturlig lov</a>).</p>
+  </section>
+
+  <section class="section" id="k-p">
+    <h2>P. Kristent historiesyn og skapelsesfortellingene</h2>
+    <p>Kristendommen har et <strong>lineært historiesyn</strong>: historien har en klar begynnelse (skapelsen) og en klar slutt (dommedag) – i motsetning til et syklisk/sirkulært historiesyn (som i hinduisme og buddhisme, der verden stadig blir til og går under, knyttet til reinkarnasjon).</p>
+    <h3>To skapelsesfortellinger i 1. Mosebok</h3>
+    <p>Bibelforskningen har funnet at Mosebøkene er satt sammen av ulike kilder/tradisjoner, noe som forklarer hvorfor 1. Mosebok faktisk inneholder <strong>to ulike skapelsesfortellinger</strong> etter hverandre:</p>
+    <ul>
+      <li><strong>Sjudagersfortellingen</strong> (1 Mos 1 – 2,4): Gud skaper verden på seks dager og hviler den sjuende. Forskere mener denne teksten ble skrevet ned under/etter det babylonske fangenskapet (ca. 586–530 f.Kr.) – et behov for å skille jødenes tro fra den babylonske astronomien, der sola og månen ble tilbedt som guder. Teksten fokuserer på jødenes egen, ene Gud som står bak alt.</li>
+      <li><strong>Hagefortellingen</strong> (1 Mos 2,4–25): Gud former mennesket av jord og planter Edens hage. Regnes som eldre, skrevet ned ca. år 1000 f.Kr., på tiden til Kong David og Israels storhetstid. Bærer preg av en ørkenkultur der vann skaper liv, og forteller at mannen trenger en make.</li>
+    </ul>
+    <div class="box warn">
+      <div class="box-title">Vanlig feil</div>
+      <p>Å tro det bare finnes én skapelsesfortelling i Bibelen, eller å blande sammen innholdet i de to. Legg merke til at de har ulik stil, ulikt fokus og trolig ulik skrivetid – et godt eksempel på hvorfor historisk-kritisk bibelforskning (se <a href="#k-i">avsnitt I</a>) er nyttig.</p>
+    </div>
+    <h3>Dommedag og verdens ende</h3>
+    <p>Ifølge kristen tro skal tiden en dag stanses og historien avsluttes:</p>
+    <ul>
+      <li><strong>Dommedag</strong> er en konkret dag der Gud tar et endelig oppgjør med det onde.</li>
+      <li>Tegnet på at slutten er nær, er at <strong>Jesus skal komme tilbake</strong> som den seirende Messias («det andre komme»). Da vil Jesus være til stede med sin allmakt, og alle vil se at han er Gud – troen vil da ikke lenger være nødvendig, siden alle vet med sikkerhet.</li>
+      <li>Det skapes <strong>«en ny himmel og en ny jord»</strong>. Guds rike blir den eneste virkeligheten, og ingenting skiller lenger Gud og menneskene.</li>
+    </ul>
+    <p>Mennesket møter da enten <strong>frelse eller fortapelse</strong> – å være hos Gud, eller atskilt fra Gud (en atskillelse som i ulike tekster beskrives med bilder som ild, mørke eller noe utenfor menneskelig forståelse). Å være «hos Gud» beskrives som en tilværelse uten død, sorg, skrik eller smerte – et fellesskap mellom Gud og mennesker slik det opprinnelig var ment, før synd og ulydighet ødela det.</p>
+  </section>
+
+  <section class="section" id="k-q">
+    <h2>Q. Menneskesyn</h2>
+    <p>Det kristne menneskesynet bygger på at alle mennesker er <strong>skapt av Gud og i Guds bilde</strong> (1 Mos 1,26). Dette menneskesynet har flere konsekvenser:</p>
+    <ul>
+      <li>Mennesket er en av Guds skapninger, men grunnleggende forskjellig fra Gud selv, som er evig og uskapt.</li>
+      <li>Alle mennesker har <strong>lik verdi</strong>, uavhengig av egenskaper eller status.</li>
+      <li>Mennesket har en enestående stilling i forhold til resten av naturen og verden, og har et <strong>forvalteransvar</strong>: mennesket er Guds representant og skal forvalte Guds skaperverk – i dag ofte koblet til bærekraft og miljøansvar.</li>
+      <li>Mennesket er skapt til å ha et <strong>personlig forhold til Gud</strong>, og til å leve i <strong>fellesskap med andre mennesker</strong>.</li>
+      <li>Alle mennesker har <strong>fri vilje og samvittighet</strong>.</li>
+      <li>Alle mennesker synder, og trenger frelse fra Gud (se <a href="#k-r">avsnitt R om synd</a> og <a href="#k-t">avsnitt T om frelse</a>).</li>
+    </ul>
+  </section>
+
+  <section class="section" id="k-r">
+    <h2>R. Synd</h2>
+    <p>Den første gangen vi hører om synd i kristen sammenheng, er i fortellingen om <strong>syndefallet</strong> (1 Mos 3): menneskene lar seg lokke til ulydighet mot Gud, gjør opprør mot Guds vilje, og må leve med konsekvensene av dette. Dette gir det kristne menneskesynet en dobbelthet: mennesker er på samme tid Guds gode skapninger <em>og</em> syndere.</p>
+    <p>Synd i kristendommen forstås gjerne som todelt:</p>
+    <div class="box">
+      <div class="box-title">Arvesynd og synd som handling</div>
+      <p><strong>Arvesynd:</strong> Alle mennesker blir født inn i en tilværelse «utenfor paradis», som opprørere mot Gud. Synden forstås her som en <strong>makt</strong> som binder mennesket – ingen kan bli fri fra den ved å «ta seg sammen». Avstanden til den fullkomne og hellige Gud er like stor for det moralske som for det onde mennesket.<br><br>
+      <strong>Handlinger:</strong> Selv om alle er likeverdige overfor Gud, finnes det moralske forskjeller mellom mennesker når det gjelder handlinger. Det er synd å gjøre onde handlinger mot andre mennesker og naturen, men synd kan også være <strong>mangel på nestekjærlighet</strong>. Synd fører til selvopptatthet og egoisme.</p>
+    </div>
+  </section>
+
+  <section class="section" id="k-s">
+    <h2>S. Kjønn og kjønnsroller i kristendommen</h2>
+    <p>Mann og kvinne har samme grunnleggende verdi, fordi begge er skapt i Guds bilde. Likevel har kristendommens historie rommet svært ulike tolkninger av forholdet mellom mann og kvinne – det er for eksempel ikke uten betydning for enkelte at Gud ble menneske som mann; i den katolske og den ortodokse kirke er det bare menn som kan bli prester, siden presten står som Jesu stedfortreder i gudstjenesten.</p>
+    <h3>Ulike tolkninger av skapelsesfortellingene</h3>
+    <ul>
+      <li>At kvinnen skapes av mannens ribbein (1 Mos 2,21–24) er blitt tolket både som at kvinnen er <strong>underlagt</strong> mannen, og som at kvinnen er «av samme slag» som mannen – altså likeverdig.</li>
+      <li>At de to er nakne sammen uten skam (1 Mos 2,25) er tolket som et bilde på tillitsfull åpenhet mellom to likeverdige personer.</li>
+      <li>Straffen etter syndefallet (1 Mos 3,14–19) er historisk ofte blitt brukt til å begrunne mannens dominans over kvinnen.</li>
+    </ul>
+    <h3>Det gamle testamentet</h3>
+    <p>Alle religiøse ledere, patriarker og profeter i GT er menn. Omskjæring, som er tegnet på å tilhøre Guds folk, gjelder bare gutter. Kvinner omtales oftest i relasjon til menn – som mor, søster eller kone (f.eks. Sara, Rebekka og Rakel).</p>
+    <h3>Det nye testamentet</h3>
+    <p>NT gir et sammensatt bilde:</p>
+    <ul>
+      <li>Samfunnet var <strong>patriarkalsk</strong>: kvinners vitneutsagn veide mindre enn menns, og religiøse spørsmål ble sjelden diskutert med kvinner. Samtidig fikk både kvinner og menn kristen dåp.</li>
+      <li><strong>Paulus' brev</strong> er tvetydige: i Efeserbrevet 5,22–25 formaner han kvinner til å underordne seg mennene sine, mens han i Galaterbrevet 3,28 skriver at «her er ikke mann og kvinne, dere er alle én i Kristus Jesus» – et av NTs tydeligste likeverds-utsagn.</li>
+      <li><strong>Jesus</strong> selv ga kvinner en viktig plass: han hadde flere samtaler med kvinner, flere kvinner var med i følget hans (bl.a. Maria og Marta, Luk 10,38–42), og ifølge evangeliene var det kvinner som først fikk se den oppstandne Jesus (Mark 16,1–11).</li>
+    </ul>
+    <div class="box warn">
+      <div class="box-title">Vanlig feil</div>
+      <p>Å beskrive «kristendommens syn på kvinner» som om det var ett, samlet syn. Kildene spriker: Jesu egen praksis pekte mot likeverd, mens samfunnet rundt og enkelte av Paulus' formaninger er preget av et patriarkalsk samfunn. Kirkens offisielle syn gjennom historien har hatt reelle, sosiale konsekvenser for kvinner – f.eks. begrensninger i deltakelse i samfunnsliv og politikk, og et skille mellom en offentlig og en privat/religiøs sfære. Dette er bakgrunnen for at feministisk teologi fra 1900-tallet har utfordret kirken til å lese tekstene og tradisjonen på nytt, med større vekt på likeverdslinjen i budskapet.</p>
+    </div>
+  </section>
+
+  <section class="section" id="k-t">
+    <h2>T. Frelse og det kristne fremtidshåpet</h2>
+    <p>Kristendommen lærer at mennesket blir <strong>frelst ved tro</strong>: mennesket må tro på Jesus og det han gjorde for menneskene gjennom sin død og oppstandelse (se også <a href="#k-k">avsnitt K om Jesus</a>). Gjennom troen mottar mennesket frelsen som en <strong>gave fra Gud, uten forbehold</strong> – den er ikke noe man opptjener gjennom egne gode gjerninger.</p>
+    <div class="box">
+      <div class="box-title">Hvordan oppstår troen?</div>
+      <p>Mennesket oppfordres til å omvende seg og tro på Jesus (Apg 2,38). Samtidig beskrives selve troen som en <strong>gave</strong>: den oppstår når et menneske møter noen det er verdt å ha tillit til – Den hellige ånd (Ef 2,8). Troen er altså både noe mennesket oppfordres til å velge, og noe som gis.</p>
+    </div>
+    <h3>Det kristne fremtidshåpet</h3>
+    <p>Det kristne håpet handler om en dobbel frelse: frelse <strong>fra</strong> sine synder, og frelse <strong>til</strong> det evige liv i fellesskap med Jesus. «Det evige liv» skal ikke bare forstås som noe som begynner etter døden – ifølge Johannesevangeliet (Joh 5,24) starter det allerede her på jorden, i det øyeblikket et menneske begynner å tro på Jesus. I praksis oppleves dette gjennom forkynnelse og nattverd, og gjennom bønn og fellesskap med andre kristne.</p>
+  </section>
+
+  <section class="section" id="k-u">
+    <h2>U. Kristen etikk og naturlig lov</h2>
+    <p>Kristen etikk bygger på troen om at Gud er alle menneskers skaper, og at han opprettholder alt liv på jorden. Dette betyr at alle mennesker står i en sammenheng der det å være menneske innebærer relasjoner – til seg selv, til medmennesker, til naturen og samfunnet, og samtidig til Gud. Mennesket har valgfrihet, men står også til ansvar overfor Gud med sitt liv. Nettopp fordi alle mennesker er Guds skapninger, mener kristendommen at <strong>kristen etikk gjelder for alle mennesker</strong>, ikke bare for troende.</p>
+    <div class="box">
+      <div class="box-title">Guds vilje som grunnlag for etikken</div>
+      <p>I kristen etikk er det <strong>Gud som bestemmer hva som er rett og galt</strong>. Alle mennesker er forpliktet av en rettesnor/målestokk for rett og galt som er forankret utenfor mennesket og samfunnet selv – ikke noe mennesker finner på. Siden Guds vilje regnes som god, blir et samfunn som praktiserer den et godt samfunn.</p>
+    </div>
+    <h3>Den naturlige lov</h3>
+    <p>Et sentralt begrep er <strong>den naturlige lov</strong>: tanken om at den moralske innsikten ligger som en disposisjon i selve den menneskelige naturen. Det betyr at alle mennesker – troende eller ikke – har mulighet til å ane noe om hva som er rett og galt, og om hva som er Guds vilje. Dette henger sammen med <strong>den allmenne åpenbaringen</strong> (se <a href="#k-o">avsnitt O</a>): troen på at alle mennesker kan søke og oppleve at Gud står bak noe, gjennom naturopplevelse eller undring. Samvittighet og fornuft har ifølge dette synet alle mennesker, og tanken om en naturlig moral finnes igjen i lovverk og litteratur langt utover kristendommen selv. Mennesket får altså kjennskap til Guds vilje på to måter: gjennom fornuft og samvittighet (den naturlige lov), og gjennom Bibelen.</p>
+    <div class="box grey">
+      <div class="box-title">Konsekvens: felles normer på tvers av religioner</div>
+      <p>En konsekvens av tanken om allmenn åpenbaring/naturlig lov er at kristen etikk regner med at det finnes <strong>felles normer og verdier på tvers av religioner og livssyn</strong>. Et kjent eksempel er <strong>den gylne regel</strong>: «Alt dere vil at andre skal gjøre mot dere, skal dere også gjøre mot dem. For dette er loven og profetene i en sum» (Matt 7,12). Lignende regler finnes i buddhismen (i negativ form: ikke gjør mot andre det du ikke vil de skal gjøre mot deg) og i humanismen (gjensidighetsprinsippet). Internasjonale organisasjoner bygger ofte sitt arbeid på slike felles prinsipper, og det pekes gjerne på at fire av de ti bud finnes igjen i en eller annen form i ulike religioner og kulturer.</p>
+    </div>
+    <h3>Kildene til kristne normer og verdier</h3>
+    <p>De kristnes normer og verdier hentes fra Det gamle testamentet (Moseloven og profetene) og Det nye testamentet (Jesus og apostlene). Men dette reiser også diskusjoner: Bibelen er ikke en oppslagsbok for alt, og den møter i dag problemstillinger vi ikke hadde for 2000 år siden. Noe av innholdet i GT regnes i dag som jødiske tradisjoner mer enn allmenngyldig kristen etikk, og noen av retningslinjene i NT-brevene kan være tidsbundne og ikke nødvendigvis gyldige i dag – nettopp hvilke deler som er «tidsbundne» og hvilke som er varige, er noe som stadig diskuteres blant kristne.</p>
+  </section>
+
+  <section class="section" id="k-v">
+    <h2>V. Kristne normer og verdier</h2>
+    <p>Når man snakker om kristne normer og verdier, er noen begreper spesielt sentrale:</p>
+    <h3>Menneskeverd</h3>
+    <p>Å være menneske er unikt og har egenverdi, fordi mennesket er skapt i Guds bilde. Livet er noe mennesket har fått av Gud, ikke noe det har gitt seg selv – derfor regnes livet som hellig og ukrenkelig, og det er ikke opp til mennesket selv å gjøre slutt på det. Aktuelle etiske dilemmaer knyttet til menneskeverd er blant annet abort, dødsstraff og aktiv dødshjelp.</p>
+    <h3>Likeverd</h3>
+    <p>Alle mennesker er like mye verdt. Rettferdighet er viktig, og ingen skal utnyttes – samfunn som tillater utnytting og urett blir sterkt kritisert allerede i Det gamle testamentet. Aktuelle saker knyttet til likeverd er blant annet menneskehandel/moderne slaveri, rasisme og homofiles rettigheter. Dette reiser også spørsmålet om Bibelens moral er like gyldig i dag som da den ble skrevet.</p>
+    <h3>Naturens egenverdi</h3>
+    <p>Mennesket har et forvalteransvar, og naturen har egenverdi fordi den er en del av Guds skaperverk. Dette begrunnes altså annerledes enn i naturreligioner (der naturen selv regnes som guddommelig) eller i utilitarismen (der naturen primært har nytteverdi for mennesket). Naturens egenverdi har ikke alltid vært like fremtredende i kristen etikk, men har blitt stadig mer aktuell etter hvert som miljøproblemene har vokst – menneskets ansvar er å ta vare på kloden for neste generasjon (bærekraft).</p>
+    <h3>Det dobbelte kjærlighetsbudet</h3>
+    <div class="box">
+      <div class="box-title">Matt 22,37–39</div>
+      <p>«Du skal elske Herren din Gud av hele ditt hjerte og av hele din sjel og av hele din forstand. Dette er det største og første bud. Men et annet er like stort: Du skal elske din neste som deg selv.»</p>
+    </div>
+    <p>Det dobbelte kjærlighetsbudet regnes som hovednormen i kristen etikk – en sum av hele Guds vilje. Jesus sa dette da han ble spurt ut av en som kjente Moseloven godt.</p>
+    <h3>De ti bud</h3>
+    <p>De ti bud ble først gitt til Israelsfolket gjennom Moses, og regnes som en konkretisering av det dobbelte kjærlighetsbudet. De er fortsatt viktige for kristne fordi Jesus selv bekreftet deres gyldighet. De tre første budene handler om forholdet mellom Gud og mennesker, de sju siste om forholdet mellom mennesker:</p>
+    <ol>
+      <li>Du skal ikke ha andre guder enn meg.</li>
+      <li>Du skal ikke misbruke Guds navn.</li>
+      <li>Du skal holde hviledagen hellig.</li>
+      <li>Du skal hedre din far og mor.</li>
+      <li>Du skal ikke slå i hjel.</li>
+      <li>Du skal ikke bryte ekteskapet.</li>
+      <li>Du skal ikke stjele.</li>
+      <li>Du skal ikke tale usant om din neste.</li>
+      <li>Du skal ikke begjære din nestes eiendom.</li>
+      <li>Du skal ikke begjære din nestes ektefelle, eller hans arbeidsfolk eller andre som hører til hos din neste.</li>
+    </ol>
+    <div class="box grey">
+      <div class="box-title">Eksempel på tolkningsspørsmål</div>
+      <p>Budet «du skal ikke slå i hjel» reiser spørsmål som fortsatt diskuteres: gjelder dette et absolutt pasifisme-krav, eller er det rom for å løse konflikter med vold (f.eks. selvforsvar eller krig)? Dette er typisk for hvordan korte, gamle bud må tolkes inn i nye sammenhenger.</p>
+    </div>
+    <h3>Bergprekenen</h3>
+    <p>Bergprekenen (Matteus kap. 5–7) er en samling av Jesu taler, og inneholder mange av kristendommens mest sentrale etiske synspunkter. Den er tolket på svært mange måter – det er uenighet om den gjelder samfunnet den gang eller i dag, og om den skal leses som en konkret leveregel eller et ideal å strekke seg mot. Blant innholdet finner vi den gylne regel og en nytolkning av budene: forbudet mot å slå i hjel utvides til også å gjelde holdning og sinnelag, ikke bare selve handlingen (Matt 5,21–22), og budet om å elske sin neste utvides til også å gjelde ens fiender – begrunnet i at Guds omsorg og kjærlighet sprenger alle grenser.</p>
+    <h3>Etisk forbilde</h3>
+    <p>Jesus fungerer som et etisk forbilde for kristne: gjennom sine ord og gjerninger viser han hva Guds vilje er. Han satte aldri seg selv over andre – kjente eksempler er at han vasket disiplenes føtter, og at han oppsøkte og var sammen med dem samfunnet hadde støtt ut: kvinner som var skilt, syke og fattige.</p>
+  </section>
+
   <section class="section" id="pugging">
     <h2>Flashcards – pugg begreper, personer og fakta</h2>
-    <p>Klikk på kortet for å snu det. Bruk «Kan denne» for å markere kort du mestrer – fremgangen din lagres i nettleseren og består til neste besøk.</p>
+    <p>Velg hvilken del du vil øve på, klikk på kortet for å snu det, og bruk «Kan denne» for å markere kort du mestrer – fremgangen din lagres i nettleseren og består til neste besøk.</p>
+    <div class="fc-filter" id="fcFilter">
+      <button class="fc-filter-btn active" data-del="all">Alle</button>
+      <button class="fc-filter-btn" data-del="1">Del 1</button>
+      <button class="fc-filter-btn" data-del="2">Del 2</button>
+      <button class="fc-filter-btn" data-del="3">Del 3</button>
+    </div>
     <div id="flashwrap">
       <div class="fc-scene">
         <div class="fc-card" id="fcCard">
@@ -858,8 +1034,11 @@
 
   <section class="section" id="oppgaver">
     <h2>Oppgaver – med fasit</h2>
-    <p>Alle oppgavene under er hentet fra oppgavesettet. Prøv å svare selv før du trykker «Vis fasit».</p>
+    <p>Alle oppgavene under er hentet fra oppgavesettet. Prøv å svare selv før du trykker «Vis fasit». Trykk på en del for å åpne/lukke oppgavene for den.</p>
 
+    <details class="del-group" open>
+    <summary>Del 1 — Religion, livssyn og etikk</summary>
+    <div class="del-body">
     <h3>Substansielle og funksjonelle religionsdefinisjoner</h3>
     <details class="qa"><summary>Hvor vil du plassere følgende definisjon: «Religion kommer til uttrykk gjennom kulturelle tradisjoner, kunst, massemediene, politikk og samfunnsliv»?</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – den beskriver hvor/hvordan religion viser seg i samfunnet (funksjon/uttrykk), ikke hva religionen i sin kjerne inneholder av tro.</div></details>
     <details class="qa"><summary>«Religion gir følelse av identitet både for grupper og enkeltmennesker. Denne identiteten kan fungere som en markør mot dem som ikke tilhører egen religion.»</summary><div class="fasit"><strong>Fasit:</strong> Funksjonell definisjon – legger vekt på religionens sosiale funksjon (identitet, gruppetilhørighet), ikke på trosinnholdet.</div></details>
@@ -901,7 +1080,12 @@
     <details class="qa"><summary>I Norge har vi 5 nasjonale minoriteter og en urbefolkning (bruk gjerne s. 372–381 i læreboka). Hva vil det si å være et urfolk? Hvem er urfolket i Norge?</summary><div class="fasit"><strong>Fasit:</strong> Et urfolk er en folkegruppe med lang, sammenhengende historisk tilknytning til et område fra før statsdannelsen, med egen kultur, språk og samfunnsstruktur. I Norge er samene urfolket.</div></details>
     <details class="qa"><summary>Hva er en nasjonal minoritet? Hvilke nasjonale minoriteter har vi i Norge?</summary><div class="fasit"><strong>Fasit:</strong> En nasjonal minoritet er en folkegruppe med langvarig historisk tilknytning til landet, men uten egen stat, med egen folkerettslig vernestatus. Norges fem nasjonale minoriteter: jøder, kvener/norskfinner, skogfinner, rom (sigøynere) og romanifolket/tatere.</div></details>
     <details class="qa"><summary>Hvilken rolle spiller religion for disse gruppene? Hvilke forpliktelser har Norge overfor dem?</summary><div class="fasit"><strong>Fasit:</strong> Religion har for flere grupper (særlig jødene) vært en sentral del av gruppeidentiteten og et kjennetegn som historisk har gjort dem til mål for forfølgelse. For andre (kvener, skogfinner) har språk og kultur vært vel så sentralt. Norges forpliktelser: sikre likhet for loven og forby diskriminering, støtte minoritetsspråk gjennom utdanning/kultur, legge til rette for bevaring av tradisjon/religion/kultur, og rapportere jevnlig til Europarådet.</div></details>
+    </div>
+    </details>
 
+    <details class="del-group">
+    <summary>Del 2 — Jødedom</summary>
+    <div class="del-body">
     <h3>Jødedom – viktige historiske personer, hendelser og steder</h3>
     <p style="font-size:0.9rem;color:var(--muted);">Forklar betydningen for jødedommens historie.</p>
     <details class="qa"><summary>Abraham</summary><div class="fasit"><strong>Fasit:</strong> Regnes som stamfar til det jødiske folket. Inngikk en pakt med Gud: fikk løfte om land og etterkommere mot å tilbe kun denne ene Guden. Sentral også i kristendom og islam.</div></details>
@@ -972,7 +1156,12 @@
     <details class="qa"><summary>Tefillin</summary><div class="fasit"><strong>Fasit:</strong> To små, sorte lærskrin med bibelvers, bundet med lærreimer til pannen og venstre overarm. Brukes av observante voksne menn under morgenbønnen på hverdager (ikke shabbat/høytider).</div></details>
     <details class="qa"><summary>Menora</summary><div class="fasit"><strong>Fasit:</strong> Den sjuarmede lysestaken, opprinnelig fra tabernaklet/tempelet. Et av jødedommens eldste symboler – ikke å forveksle med den åttearmede hanukkia.</div></details>
     <details class="qa"><summary>Tallit</summary><div class="fasit"><strong>Fasit:</strong> Et bønneskjerf med frynser (tzitzit) i hjørnene, brukt over skuldrene under bønn. Frynsene skal minne bæreren om å følge budene (4. Mos. 15,37–41).</div></details>
+    </div>
+    </details>
 
+    <details class="del-group">
+    <summary>Del 3 — Kristendommen</summary>
+    <div class="del-body">
     <h3>Kristendommen – Jesus</h3>
     <details class="qa"><summary>Forklar forskjellen mellom jødenes og de kristnes tanker om Messias.</summary><div class="fasit"><strong>Fasit:</strong> I jødedommen er Messias en fremtidig, menneskelig konge/befrier av Davids ætt som ennå ikke har kommet – jødedommen venter fortsatt på ham. I kristendommen tror man at Messias (Kristus) allerede har kommet i Jesus fra Nasaret, og at han ikke bare er en jordisk konge, men Guds sønn som frelser menneskeheten fra synd gjennom sin død og oppstandelse – og at han skal komme tilbake («det andre komme») ved tidens ende.</div></details>
     <details class="qa"><summary>Hva betyr det at Jesus er menneskets frelser?</summary><div class="fasit"><strong>Fasit:</strong> At Jesus gjennom sin død på korset og oppstandelse sonet for menneskers synd og åpnet veien til forsoning med Gud og evig liv. Mennesker «frelses» (reddes) fra synd og død ved å tro på Jesus, ikke bare ved egen innsats/gjerninger.</div></details>
@@ -1009,6 +1198,25 @@
     <details class="qa"><summary>Hvordan oppfattes «misjonsbefalingen» (Matt 28,18–20) av kristne?</summary><div class="fasit"><strong>Fasit:</strong> Misjonsbefalingen er Jesu befaling til disiplene om å «gå ut og gjøre alle folkeslag til disipler». Noen kristne (særlig evangelikale/frikirkelige) tolker dette som en direkte plikt til aktivt å forkynne og omvende andre. Andre vektlegger heller et bredere kall til å leve ut og vitne om troen gjennom handling (diakoni, nestekjærlighet) framfor aktiv overtalelse, og er mer tilbakeholdne med organisert misjonsvirksomhet.</div></details>
     <details class="qa"><summary>Gi eksempler på hvordan kristendommen har skapt konflikter og krig, men også eksempler på hvordan kristne verdier brukes for å skape fred og samhold.</summary><div class="fasit"><strong>Fasit:</strong> Konflikt/krig: korstogene (middelalderen), religionskrigene i Europa etter reformasjonen, og kolonisering der misjon var tett koblet til undertrykkelse av urfolk. Fred/samhold: kristne verdier har inspirert menneskerettighetsarbeid, bistandsorganisasjoner (f.eks. Kirkens Nødhjelp), fredsmekling og forsoningsarbeid, og diakonalt arbeid for fattige og syke.</div></details>
     <details class="qa"><summary>Hvorfor har jødedommen blitt beskyldt for å være underlegen kristendommen, og hva har vært kritikken mot denne beskyldningen?</summary><div class="fasit"><strong>Fasit:</strong> Historisk har enkelte kristne (såkalt erstatningsteologi) hevdet at kirken har «overtatt» rollen som Guds utvalgte folk fra jødene, forsterket av beskyldninger om at jødene bar skyld for Jesu død («gudsmord») – dette bidro historisk til antisemittisme. Kritikken er at dette bygger på en feiltolkning av Det nye testamentet, at jødedommen er en selvstendig, levende religion med egen verdi (ikke bare en «forløper»), og at hele det jødiske folket aldri kan bære kollektiv skyld for enkeltpersoners handlinger for 2000 år siden. De fleste kirkesamfunn i dag (bl.a. den katolske kirke etter Det andre Vatikankonsil i 1965) har offisielt tatt avstand fra denne beskyldningen.</div></details>
+
+    <h3>Kristendommen – sentrale trekk</h3>
+    <details class="qa"><summary>Hva menes med at kristendommen er en åpenbaringsreligion, og hva er forskjellen på den spesielle og den allmenne åpenbaring?</summary><div class="fasit"><strong>Fasit:</strong> En åpenbaringsreligion bygger på at Gud selv har vist/avslørt seg for mennesker. Den spesielle åpenbaringen er Guds direkte, personlige åpenbaring gjennom Jesus. Den allmenne åpenbaringen er tilgjengelig for alle mennesker uavhengig av religion – en anelse om at det står en Gud bak alt, som kan oppstå ved undring over å være til, eller ved sterke naturopplevelser.</div></details>
+    <details class="qa"><summary>Forklar kristendommens lineære historiesyn, og hva som ifølge kristen tro skjer ved «tidens ende».</summary><div class="fasit"><strong>Fasit:</strong> Et lineært historiesyn vil si at historien har en klar begynnelse (skapelsen) og en klar slutt (dommedag), til forskjell fra et syklisk historiesyn der verden stadig blir til og går under (som i hinduisme/buddhisme). Ved tidens ende tar Gud et endelig oppgjør med det onde på dommedag, Jesus kommer tilbake som den seirende Messias, og en «ny himmel og en ny jord» skapes der Guds rike blir den eneste virkeligheten. Mennesket møter da enten frelse (fellesskap med Gud, uten død, sorg eller smerte) eller fortapelse (atskillelse fra Gud).</div></details>
+    <details class="qa"><summary>Hvorfor finnes det to ulike skapelsesfortellinger i 1. Mosebok, og hva skiller dem?</summary><div class="fasit"><strong>Fasit:</strong> 1. Mosebok er satt sammen av ulike kilder/tradisjoner. Sjudagersfortellingen (1 Mos 1–2,4) regnes som skrevet under/etter det babylonske fangenskapet (ca. 586–530 f.Kr.), og skiller jødenes tro fra babylonsk astronomi/soldyrkelse. Hagefortellingen (1 Mos 2,4–25) regnes som eldre, fra ca. år 1000 f.Kr. (Kong Davids tid), og bærer preg av en ørkenkultur der vann skaper liv.</div></details>
+    <details class="qa"><summary>Hva vil det si at mennesket er skapt i Guds bilde, og hvilket ansvar følger av dette menneskesynet?</summary><div class="fasit"><strong>Fasit:</strong> At mennesket er skapt i Guds bilde (1 Mos 1,26) betyr blant annet at alle mennesker har lik verdi, og at mennesket har en enestående stilling i forhold til naturen. Dette gir mennesket et forvalteransvar: som Guds representant skal mennesket forvalte skaperverket på en bærekraftig måte, ikke utnytte det fritt.</div></details>
+    <details class="qa"><summary>Hva er forskjellen på arvesynd og synd som handling?</summary><div class="fasit"><strong>Fasit:</strong> Arvesynd er tanken om at alle mennesker fødes inn i en tilværelse «utenfor paradis», som opprørere mot Gud – synd forstått som en makt mennesket ikke kan fri seg fra på egen hånd. Synd som handling handler om konkrete onde handlinger mot andre mennesker eller naturen, eller mangel på nestekjærlighet – her finnes det moralske forskjeller mellom mennesker, selv om alle er likeverdige overfor Gud.</div></details>
+    <details class="qa"><summary>Forklar «det ondes problem» og «lidelsens problem».</summary><div class="fasit"><strong>Fasit:</strong> Det ondes problem er spørsmålet om hvordan en allmektig og god Gud kan tillate at det onde finnes i verden. Lidelsens problem er beslektet, men handler mer spesifikt om hvorfor uskyldige mennesker rammes av lidelse (sykdom, katastrofer, urettferdighet) dersom Gud både kan og vil forhindre det. Kristne svar varierer – blant annet at mennesket har fått fri vilje (og dermed kan velge det onde), at synden har ødelagt den opprinnelige skaperordenen, eller at lidelse kan ha en mening mennesket ikke alltid forstår.</div></details>
+    <details class="qa"><summary>Hvordan har feminisme og feministisk teologi påvirket kristendommen og kirken til å tenke annerledes?</summary><div class="fasit"><strong>Fasit:</strong> Feministisk teologi (fra 1900-tallet) har utfordret kirken til å lese bibeltekster og tradisjon på nytt, med vekt på likeverdslinjen i budskapet (f.eks. Gal 3,28 og Jesu egen praksis overfor kvinner) framfor de patriarkalske trekkene i samfunnet tekstene ble skrevet i. Dette har bidratt til debatt om og endring av kvinners stilling i mange kirkesamfunn, blant annet adgang til prestetjeneste i flere protestantiske kirker (deriblant Den norske kirke).</div></details>
+    <details class="qa"><summary>Gi eksempler på at Det nye testamentet gir et sammensatt bilde av kvinnens stilling.</summary><div class="fasit"><strong>Fasit:</strong> På den ene siden var samfunnet patriarkalsk (kvinners vitneutsagn telte mindre, religiøse spørsmål ble sjelden diskutert med kvinner), og Paulus formaner i Efeserbrevet 5,22–25 kvinner til å underordne seg sine menn. På den andre siden fikk både kvinner og menn dåp, Paulus skriver i Galaterbrevet 3,28 at alle er «én i Kristus», og Jesus selv hadde mange samtaler med kvinner, hadde kvinner i sitt følge, og ifølge evangeliene var det kvinner som først fikk se den oppstandne Jesus.</div></details>
+    <details class="qa"><summary>Hva vil det si at mennesket blir frelst «ved tro», og hvordan beskrives selve troen?</summary><div class="fasit"><strong>Fasit:</strong> Mennesket må tro på Jesus og det han gjorde ved sin død og oppstandelse; gjennom troen mottas frelsen som en gave fra Gud, uten forbehold – ikke noe man opptjener. Samtidig beskrives selve troen som en gave: den oppstår når mennesket møter noen det er verdt å ha tillit til (Den hellige ånd), selv om mennesket også oppfordres til selv å omvende seg og tro.</div></details>
+    <details class="qa"><summary>Hva innebærer de kristnes tro på at Gud er alle menneskers skaper og at han opprettholder alt liv på jorda?</summary><div class="fasit"><strong>Fasit:</strong> At alle mennesker står i en sammenheng der det å være menneske betyr å ha relasjoner til seg selv, til medmennesker, til naturen og samfunnet, og samtidig til Gud. Mennesket har valgfrihet, men står også til ansvar overfor Gud med sitt liv. Siden alle mennesker er Guds skapninger, gjelder kristen etikk for alle mennesker – ikke bare for troende.</div></details>
+    <details class="qa"><summary>Hva betyr det for mennesket at Guds vilje er grunnlaget for kristen etikk?</summary><div class="fasit"><strong>Fasit:</strong> Det betyr at det er Gud som bestemmer hva som er rett og galt, og at alle mennesker er forpliktet av en rettesnor for rett og galt som er forankret utenfor mennesket og samfunnet selv – ikke noe mennesker finner på selv. Fordi Guds vilje regnes som god, blir et samfunn som praktiserer den et godt samfunn.</div></details>
+    <details class="qa"><summary>Hva er den naturlige lov, og hvordan får mennesket ifølge kristen tro kjennskap til Guds vilje?</summary><div class="fasit"><strong>Fasit:</strong> Den naturlige lov er tanken om at den moralske innsikten ligger som en disposisjon i selve den menneskelige naturen, slik at alle mennesker – troende eller ikke – kan ane noe om rett og galt gjennom samvittighet og fornuft. Dette henger sammen med den allmenne åpenbaringen. Mennesket får altså kjennskap til Guds vilje på to måter: gjennom fornuft/samvittighet (den naturlige lov) og gjennom Bibelen.</div></details>
+    <details class="qa"><summary>Hvordan henger tanken om allmenn åpenbaring/naturlig lov sammen med at kristen etikk regner med felles normer og verdier på tvers av religioner? Gi et eksempel.</summary><div class="fasit"><strong>Fasit:</strong> Siden alle mennesker ifølge kristen tro kan ane noe om Guds vilje gjennom fornuft og samvittighet (uavhengig av religion), forventer kristen etikk at man finner lignende moralske prinsipper igjen i andre religioner og livssyn. Et eksempel er den gylne regel («alt dere vil at andre skal gjøre mot dere, skal dere også gjøre mot dem», Matt 7,12), som finnes igjen i negativ form i buddhismen og som gjensidighetsprinsippet i humanismen.</div></details>
+    <details class="qa"><summary>Hva er kildene til de kristnes normer og verdier, og hvilke diskusjoner foregår rundt disse kildene?</summary><div class="fasit"><strong>Fasit:</strong> Kildene er Det gamle testamentet (Moseloven og profetene) og Det nye testamentet (Jesus og apostlene). Diskusjonene handler blant annet om at Bibelen ikke er en oppslagsbok for alt og møter problemstillinger som ikke fantes for 2000 år siden, at deler av GT i dag regnes mer som jødiske tradisjoner enn allmenngyldig kristen etikk, og at noen av retningslinjene i NT-brevene kan være tidsbundne og ikke nødvendigvis gyldige i dag.</div></details>
+    <details class="qa"><summary>Forklar begrepene menneskeverd, likeverd, naturens egenverdi, det dobbelte kjærlighetsbud, de ti bud, Bergprekenen og etisk forbilde, med et eksempel på hver.</summary><div class="fasit"><strong>Fasit:</strong> <strong>Menneskeverd</strong> – mennesket har egenverdi fordi det er skapt i Guds bilde, og livet er hellig/ukrenkelig (eks.: debatten om aktiv dødshjelp). <strong>Likeverd</strong> – alle mennesker er like mye verdt (eks.: kritikk av menneskehandel og rasisme). <strong>Naturens egenverdi</strong> – naturen har verdi fordi den er en del av Guds skaperverk, ikke bare fordi den er nyttig for mennesker (eks.: forvalteransvar for klima og miljø). <strong>Det dobbelte kjærlighetsbud</strong> – å elske Gud og sin neste som seg selv (Matt 22,37–39), hovednormen i kristen etikk. <strong>De ti bud</strong> – konkretisering av kjærlighetsbudet, gitt til Israelsfolket ved Moses (eks.: forbudet mot å stjele eller drepe). <strong>Bergprekenen</strong> – Jesu samling av etiske taler i Matteus 5–7, med bl.a. den gylne regel og en skjerpet tolkning av budene. <strong>Etisk forbilde</strong> – Jesus viser Guds vilje gjennom egne ord og handlinger, f.eks. ved å vaske disiplenes føtter og oppsøke dem samfunnet støtte ut.</div></details>
+    </div>
+    </details>
   </section>
 
   <section class="section" id="kompetanse">
@@ -1049,6 +1257,11 @@
       <li>Å tro «sant menneske og sann Gud» betyr at Jesus var en blanding/halvveis av begge – det betyr fullt ut begge deler samtidig.</li>
       <li>Å blande sammen jødisk og kristen Messias-forståelse (jødedommen venter fortsatt på Messias; kristendommen tror han allerede har kommet i Jesus).</li>
       <li>Å tro at alle kristne kirkesamfunn har samme bibelsyn – spennet går fra bibelisme/fundamentalisme til historisk-kritisk lesning og frigjøringsteologi.</li>
+      <li>Å tro det bare finnes én skapelsesfortelling i Bibelen – 1. Mosebok inneholder faktisk to (sjudagersfortellingen og hagefortellingen), med ulik alder og stil.</li>
+      <li>Å beskrive «kristendommens syn på kvinner» som ett, samlet syn – kildene spriker mellom et patriarkalsk samfunn/enkelte av Paulus' formaninger og Jesu egen likeverds-praksis.</li>
+      <li>Å blande sammen arvesynd (synd som en makt/tilstand) og synd som enkelthandlinger.</li>
+      <li>Å tro at frelse er noe mennesket opptjener gjennom gode gjerninger – i kristen tro er frelsen en gave som mottas ved tro.</li>
+      <li>Å blande sammen den naturlige lov (moralsk innsikt i menneskets natur, tilgjengelig for alle) med selve Bibelen som kilde til etikk.</li>
     </ul>
   </section>
 
@@ -1105,6 +1318,19 @@
       <li><strong>Sakrament</strong> – hellig handling som formidler Guds nåde (f.eks. dåp og nattverd).</li>
       <li><strong>Nattverd</strong> – måltid (brød og vin) til minne om Jesu siste måltid og offerdød.</li>
       <li><strong>Erstatningsteologi</strong> – historisk kristen tanke om at kirken «overtok» rollen som Guds utvalgte folk fra jødene – avvist av de fleste kirkesamfunn i dag.</li>
+      <li><strong>Åpenbaringsreligion</strong> – en religion som bygger på at Gud selv har åpenbart seg for mennesker.</li>
+      <li><strong>Spesiell/allmenn åpenbaring</strong> – Guds åpenbaring gjennom Jesus (spesiell), og den som er tilgjengelig for alle mennesker uavhengig av religion (allmenn).</li>
+      <li><strong>Lineært historiesyn</strong> – historien har en klar begynnelse og en klar slutt (skapelse og dommedag).</li>
+      <li><strong>Eskatologi</strong> – læren om de siste ting/verdens ende.</li>
+      <li><strong>Forvalteransvar</strong> – mennesket som Guds representant skal forvalte skaperverket på en bærekraftig måte.</li>
+      <li><strong>Arvesynd</strong> – at alle mennesker fødes som opprørere mot Gud, «utenfor paradis».</li>
+      <li><strong>Patriarkat</strong> – samfunnsordning der menn har den dominerende makten/posisjonen.</li>
+      <li><strong>Feministisk teologi</strong> – retning som leser bibeltekst og tradisjon på nytt med vekt på likeverd mellom kjønnene.</li>
+      <li><strong>Naturlig lov</strong> – tanken om at moralsk innsikt ligger i selve den menneskelige naturen, tilgjengelig for alle gjennom fornuft og samvittighet.</li>
+      <li><strong>Den gylne regel</strong> – «alt dere vil at andre skal gjøre mot dere, skal dere også gjøre mot dem» (Matt 7,12).</li>
+      <li><strong>Menneskeverd</strong> – at mennesket har egenverdi fordi det er skapt i Guds bilde.</li>
+      <li><strong>Det dobbelte kjærlighetsbud</strong> – å elske Gud og sin neste som seg selv (Matt 22,37–39).</li>
+      <li><strong>Bergprekenen</strong> – Jesu samling av etiske taler i Matteus kap. 5–7.</li>
     </ul>
   </section>
 
@@ -1187,7 +1413,16 @@ const checklistItems = [
   "Jeg kan forklare forskjellen mellom jødisk og kristen Messias-forståelse.",
   "Jeg kan forklare hvem Paulus var, hvordan han møtte Jesus, og hva «hedningenes apostel» betyr.",
   "Jeg kan drøfte kristendommens syn på andre religioner, inkludert misjonsbefalingen og erstatningsteologi.",
-  "Jeg kan forklare begrepene apostel, disippel, Kristus, martyr, avlatsbrev, sakrament og pietisme."
+  "Jeg kan forklare begrepene apostel, disippel, Kristus, martyr, avlatsbrev, sakrament og pietisme.",
+  "Jeg kan forklare hva en åpenbaringsreligion er, og forskjellen på spesiell og allmenn åpenbaring.",
+  "Jeg kan forklare kristendommens lineære historiesyn, og hva som skjer ifølge kristen tro ved dommedag/tidens ende.",
+  "Jeg kan gjøre rede for de to skapelsesfortellingene i 1. Mosebok, og hva som skiller dem.",
+  "Jeg kan forklare det kristne menneskesynet og hva forvalteransvar innebærer.",
+  "Jeg kan forklare forskjellen på arvesynd og synd som handling.",
+  "Jeg kan drøfte kristendommens ulike syn på kjønn og kjønnsroller, med eksempler fra både GT og NT.",
+  "Jeg kan forklare hva det vil si å bli frelst «ved tro», og hva det kristne fremtidshåpet går ut på.",
+  "Jeg kan forklare hvorfor Guds vilje er grunnlaget for kristen etikk, og hva den naturlige lov er.",
+  "Jeg kan forklare menneskeverd, likeverd, naturens egenverdi, det dobbelte kjærlighetsbud, de ti bud, Bergprekenen og etisk forbilde."
 ];
 const CL_KEY = 'religion-del1-checklist';
 function loadChecklistState(){ try { return JSON.parse(localStorage.getItem(CL_KEY)) || {}; } catch(e){ return {}; } }
@@ -1214,110 +1449,139 @@ checklistItems.forEach((text, i) => {
 
 // ---------- Flashcards ----------
 const flashcards = [
-  {q:"Livssyn", a:"Et menneskes syn på virkeligheten, mennesket og etikk."},
-  {q:"Eksistensielle spørsmål", a:"De store spørsmålene ved det å være menneske (mening, død, frihet, godt/ondt osv.)."},
-  {q:"Edward Tylor", a:"«Religion er tro på åndelige vesener» – klassisk substansiell religionsdefinisjon."},
-  {q:"Rudolf Otto", a:"«Religion er møtet med det hellige» – substansiell definisjon; opphavsmann til begrepet det numinøse."},
-  {q:"Numinøs", a:"Ottos begrep for erfaringen av det hellige – noe «helt annerledes» enn hverdagen."},
-  {q:"Mysterium tremendum et fascinans", a:"Det hellige skremmer oss (tremendum) samtidig som det tiltrekker oss (fascinans)."},
-  {q:"Monoteisme", a:"Tro på én gud."},
-  {q:"Polyteisme", a:"Tro på flere guder."},
-  {q:"Panteisme", a:"Troen på at gud og naturen/verden er ett og det samme."},
-  {q:"Animisme", a:"Troen på at ånder finnes i naturen, gjenstander, dyr og steder."},
-  {q:"Substansiell religionsdefinisjon", a:"Definisjon som legger vekt på religionens innhold (f.eks. tro på åndelige vesener/det hellige)."},
-  {q:"Funksjonell religionsdefinisjon", a:"Definisjon som legger vekt på hvilken funksjon religion har for mennesker og samfunn."},
-  {q:"Ekstase", a:"Å bli ett med det guddommelige – mystikerens mål, kan fremkalles ved yoga, bønn, faste, dans, musikk m.m."},
-  {q:"Sufier", a:"Muslimske mystikere."},
-  {q:"Myte (fagbegrep)", a:"En fortelling knyttet til det guddommelige/overnaturlige i en religion, oppleves som sann av den troende."},
-  {q:"Ritual", a:"En fast, gjentagende religiøs handling, ofte knyttet til bestemte tider, steder eller livsoverganger."},
-  {q:"Estetikk", a:"Det som påvirker sansene våre: syn, hørsel, berøring, smak og lukt."},
-  {q:"Lineært historiesyn", a:"En gud skapte verden og tiden ut fra ingenting; tiden går fra start til slutt (kristendom, jødedom, islam)."},
-  {q:"Syklisk historiesyn", a:"Verden blir til og går under, om og om igjen – henger sammen med reinkarnasjon (hinduisme, buddhisme)."},
-  {q:"Den gylne regel", a:"Gjør mot andre som du vil at andre skal gjøre mot deg – finnes i variasjoner i de fleste religioner/livssyn."},
-  {q:"Sekularisering", a:"At religion mister innflytelse over enkeltmennesker, kultur eller samfunn – på samfunns-, organisasjons- og individnivå."},
-  {q:"Believing without belonging", a:"Å tro uten å tilhøre/delta aktivt i et trossamfunn – tro, praksis og medlemskap faller ikke nødvendigvis sammen."},
-  {q:"Urfolk i Norge", a:"Samene."},
-  {q:"Norges fem nasjonale minoriteter", a:"Jøder, kvener/norskfinner, skogfinner, rom (sigøynere) og romanifolket/tatere."},
-  {q:"Fundamentalisme", a:"Religiøs retning som hevder å eie den ene, bokstavelige sannheten om gud, og gjør aktiv motstand mot sekularisering."},
-  {q:"Religionskritikk", a:"Å granske og vurdere en religiøs praksis eller teori – ikke nødvendigvis å avvise religion."},
-  {q:"Intern religionskritikk", a:"Kritikk fra troende medlemmer selv, f.eks. Luther, Jesus, Muhammed, Buddha."},
-  {q:"Ludwig Feuerbach", a:"Gud er en projeksjon av menneskets ønsker og behov."},
-  {q:"Karl Marx", a:"Religion er «opium for folket» – trøst som dysser ned kritikk av sosial urettferdighet."},
-  {q:"Friedrich Nietzsche", a:"«Gud er død» – uten Gud står mennesket friere til å se sine egne verdier."},
-  {q:"Sigmund Freud", a:"Gud er en mestringsstrategi; religion er nært knyttet til nevrose."},
-  {q:"Det store skismaet (1054)", a:"Splittelsen mellom den katolske og den ortodokse kirke, som følge av uenighet om pavens makt."},
-  {q:"Empatisk innlevelse", a:"Å bruke fantasien for å forstå en religion/et livssyn på dets egne premisser, uten selv å måtte tro på det."},
-  {q:"Dogme", a:"En læresetning som regnes som absolutt sann innenfor en religion, og som ikke skal betviles."},
-  {q:"Trosbekjennelse", a:"En formell, ofte offisiell erklæring av hva en religion/trosretning tror på."},
-  {q:"Ortodoks jødedom", a:"Retning der Toraen regnes som guddommelig og loven skal følges – omfatter ny-ortodokse og ultraortodokse."},
-  {q:"Reformjødedom", a:"Retning som ser religiøs praksis som en personlig sak, og vektlegger etikk/medmenneskelighet framfor bokstavelig regelfølging."},
-  {q:"Konservativ jødedom", a:"Retning som mener loven må følges, men tolkes inn i en moderne kontekst."},
-  {q:"Mitsva (mitsvot)", a:"Religiøst bud. Jødisk tradisjon regner 613 mitsvot: 248 positive og 365 negative forpliktelser."},
-  {q:"Nestekjærlighetsbudet", a:"«Du skal elske din neste som deg selv» (3. Mos. 19,18) – sentralt i jødisk etikk."},
-  {q:"Guds utvalgte folk", a:"Kan tolkes som «framfor» (overlegenhet) eller «blant» (ansvar/oppgave) alle andre folk – de fleste lærde vektlegger ansvaret."},
-  {q:"Abraham", a:"Stamfar til det jødiske folket, inngikk pakt med Gud om land og etterkommere."},
-  {q:"Moses", a:"Ledet utvandringen fra Egypt (Exodus) og mottok Toraen på Sinai-fjellet."},
-  {q:"Kong David", a:"Samlet de israelittiske stammene ca. år 1000 f.Kr. og gjorde Jerusalem til hovedstad."},
-  {q:"Det første tempelet", a:"Bygget av Salomo, ødelagt av Babylon i 586 f.Kr."},
-  {q:"Det andre tempelet", a:"Bygget etter det babylonske eksilet, ødelagt av Romerriket i år 70 e.Kr."},
-  {q:"Diaspora", a:"Jødenes spredning og liv utenfor Israel/Kanaan, særlig etter år 70 e.Kr."},
-  {q:"Rabbiner", a:"Jødisk lærd og religiøs leder med kunnskap om Toraen og jødisk lov."},
-  {q:"Sionisme", a:"Bevegelse (Theodor Herzl, 1896) for en jødisk nasjonalstat i Israel."},
-  {q:"Holocaust", a:"Nazistenes folkemord på ca. 6 millioner jøder under 2. verdenskrig (1941–1945)."},
-  {q:"FNs delingsplan / staten Israel", a:"FN vedtok delingsplanen 1947; staten Israel ble proklamert 14. mai 1948."},
-  {q:"Tanakh", a:"Den jødiske bibelen: Tora, Neviim (Profetene) og Ketuvim (Skriftene)."},
-  {q:"Talmud", a:"Mishna + Gemara – jødedommens mest omfattende samling av lov, etikk og diskusjon."},
-  {q:"Siddur", a:"Den jødiske bønneboken."},
-  {q:"Shema", a:"Jødedommens sentrale trosbekjennelse: «Hør, Israel: Herren er vår Gud, Herren er én.»"},
-  {q:"Kosher", a:"De jødiske spisereglene – bl.a. forbud mot å blande melk og kjøtt."},
-  {q:"Shabbat", a:"Den ukentlige hviledagen, fra fredag til lørdag kveld."},
-  {q:"Pesach", a:"Påsken – minner om utvandringen fra Egypt, med sedermåltid og usyret brød (matzo)."},
-  {q:"Jom Kippur", a:"Forsoningsdagen – den helligste dagen i det jødiske året, preget av faste og bønn."},
-  {q:"Hanukka", a:"8 dager, minner om gjeninnvielsen av tempelet og miraklet med tempeloljen."},
-  {q:"Purim", a:"Minner om redningen av jødene i Persia (Esters bok) – feires med utkledning og gaver til fattige."},
-  {q:"Bar mitsva / bat mitsva", a:"Seremoni som markerer religiøs myndighet – ved 13 år (gutter) og 12 år (jenter)."},
-  {q:"Davidsstjernen", a:"Seksspisset stjerne, symbol på jødisk identitet – på Israels flagg."},
-  {q:"Kippa", a:"Rundt hodeplagg, tegn på ærbødighet for Gud."},
-  {q:"Mesusa", a:"Kapsel med Shema-tekst festet på dørkarmen."},
-  {q:"Tefillin", a:"Bønnekapsler med bibelvers, bundet til panne og arm under hverdagens morgenbønn."},
-  {q:"Menora", a:"Den sjuarmede lysestaken fra tempelet (ikke å forveksle med hanukkia)."},
-  {q:"Tallit", a:"Bønneskjerf med frynser (tzitzit), skal minne bæreren om budene."},
-  {q:"Kanon (Bibelen)", a:"Den offisielle samlingen av hellige skrifter i kristendommen."},
-  {q:"Det gamle testamentet", a:"39 bøker, hebraisk, skrevet ca. 900–400 f.Kr. Fire grupper: Mosebøkene, historiske bøker, poetiske bøker, profetbøker."},
-  {q:"Det nye testamentet", a:"27 bøker, gresk, skrevet ca. 50–100 e.Kr. Fire grupper: evangeliene, Apostlenes gjerninger, brevene, Johannes' åpenbaring."},
-  {q:"Evangelium", a:"Betyr «godt budskap»; de fire bøkene om Jesu liv, død og oppstandelse."},
-  {q:"De fire evangelistene", a:"Matteus, Markus, Lukas og Johannes."},
-  {q:"Matteusevangeliet", a:"Ca. 70–80 e.Kr., skrevet for kristne jøder – Jesus er Messias, kirken er Guds nye folk."},
-  {q:"Markusevangeliet", a:"Ca. 65 e.Kr., for ikke-jøder – en lidelseshistorie der Messias lider og dør."},
-  {q:"Lukasevangeliet", a:"Ca. 70–80 e.Kr., skrevet av legen Lukas – Jesus som verdens frelser, omsorg for syke og nødlidende."},
-  {q:"Johannesevangeliet", a:"Ca. 90 e.Kr. – refleksjon over hvem Jesus er, bruker språklige bilder."},
-  {q:"Lignelse", a:"En bilderik, symbolsk fortelling Jesus brukte for å forkynne, f.eks. den bortkomne sønn."},
-  {q:"Apostlenes gjerninger", a:"Fortsettelsen på Lukasevangeliet – beskriver urkirkens historie og Paulus' misjonsvirksomhet."},
-  {q:"Johannes' åpenbaring", a:"Siste bok i NT – brev til menigheter og en beskrivelse av verdens ende og Guds rike."},
-  {q:"Historisk-kritisk bibelforskning", a:"Vitenskapelig tilnærming (fra 1800-tallet) som studerer Bibelens tekster, samtid, forfattere og endringer over tid."},
-  {q:"Frigjøringsteologi", a:"Bibeltolkning fra 1960-tallet som vektlegger frigjøring fra fattigdom og undertrykkelse – omstridt pga. politisk tilknytning."},
-  {q:"Bibelisme", a:"Å ta alt innholdet i Bibelen bokstavelig."},
-  {q:"Kristen fundamentalisme (om Bibelen)", a:"Bibelen er ufeilbar; ofte også fokus på tradisjonelle familieverdier og nasjonalisme."},
-  {q:"Kreasjonisme", a:"At skapelsesberetningen forstås bokstavelig – Gud skapte verden på 6 dager."},
-  {q:"Sant menneske og sann Gud", a:"Kristen lære (Kalkedon 451) om at Jesus var fullt ut menneske og fullt ut Gud samtidig."},
-  {q:"Jesus som frelser", a:"Jesus sonet for menneskers synd gjennom død og oppstandelse, og åpnet veien til forsoning med Gud."},
-  {q:"Messias – jødisk vs. kristen forståelse", a:"Jødedom: en fremtidig konge som ennå ikke har kommet. Kristendom: Messias (Kristus) har allerede kommet i Jesus."},
-  {q:"Nattverd", a:"Måltid med brød og vin til minne om Jesu siste måltid og offerdød."},
-  {q:"Paulus (opprinnelig navn)", a:"Saulus – jødisk fariseer som forfulgte de første kristne før han ble omvendt."},
-  {q:"Paulus' omvendelse", a:"Møtte Jesus i en syns-/lysopplevelse på veien til Damaskus."},
-  {q:"Hedningenes apostel", a:"Paulus' tilnavn – han misjonerte særlig blant ikke-jøder og mente frelsen var for alle."},
-  {q:"Misjonsbefalingen", a:"Matt 28,18–20: Jesu befaling om å gjøre alle folkeslag til disipler."},
-  {q:"Erstatningsteologi", a:"Historisk kristen tanke om at kirken «overtok» rollen som Guds utvalgte folk fra jødene – avvist av de fleste kirkesamfunn i dag."},
-  {q:"Avlatsbrev", a:"Dokument solgt av den katolske kirke i middelalderen som lovet ettergivelse av straff for synd – Luthers kritikk utløste reformasjonen."},
-  {q:"Dissenterloven (1845)", a:"Norsk lov som ga andre kristne trossamfunn enn statskirken rett til å utøve sin religion."},
-  {q:"Pietisme", a:"Protestantisk retning med vekt på personlig, følelsesmessig gudstro og aktivt kristenliv – sterk i Norge (haugianerne)."},
-  {q:"Sakrament", a:"Hellig handling som formidler Guds nåde, f.eks. dåp og nattverd."},
-  {q:"Martyr", a:"En som lider døden/forfølgelse for sin tro, f.eks. Stefanus."}
+  {del:1,q:"Livssyn", a:"Et menneskes syn på virkeligheten, mennesket og etikk."},
+  {del:1,q:"Eksistensielle spørsmål", a:"De store spørsmålene ved det å være menneske (mening, død, frihet, godt/ondt osv.)."},
+  {del:1,q:"Edward Tylor", a:"«Religion er tro på åndelige vesener» – klassisk substansiell religionsdefinisjon."},
+  {del:1,q:"Rudolf Otto", a:"«Religion er møtet med det hellige» – substansiell definisjon; opphavsmann til begrepet det numinøse."},
+  {del:1,q:"Numinøs", a:"Ottos begrep for erfaringen av det hellige – noe «helt annerledes» enn hverdagen."},
+  {del:1,q:"Mysterium tremendum et fascinans", a:"Det hellige skremmer oss (tremendum) samtidig som det tiltrekker oss (fascinans)."},
+  {del:1,q:"Monoteisme", a:"Tro på én gud."},
+  {del:1,q:"Polyteisme", a:"Tro på flere guder."},
+  {del:1,q:"Panteisme", a:"Troen på at gud og naturen/verden er ett og det samme."},
+  {del:1,q:"Animisme", a:"Troen på at ånder finnes i naturen, gjenstander, dyr og steder."},
+  {del:1,q:"Substansiell religionsdefinisjon", a:"Definisjon som legger vekt på religionens innhold (f.eks. tro på åndelige vesener/det hellige)."},
+  {del:1,q:"Funksjonell religionsdefinisjon", a:"Definisjon som legger vekt på hvilken funksjon religion har for mennesker og samfunn."},
+  {del:1,q:"Ekstase", a:"Å bli ett med det guddommelige – mystikerens mål, kan fremkalles ved yoga, bønn, faste, dans, musikk m.m."},
+  {del:1,q:"Sufier", a:"Muslimske mystikere."},
+  {del:1,q:"Myte (fagbegrep)", a:"En fortelling knyttet til det guddommelige/overnaturlige i en religion, oppleves som sann av den troende."},
+  {del:1,q:"Ritual", a:"En fast, gjentagende religiøs handling, ofte knyttet til bestemte tider, steder eller livsoverganger."},
+  {del:1,q:"Estetikk", a:"Det som påvirker sansene våre: syn, hørsel, berøring, smak og lukt."},
+  {del:1,q:"Lineært historiesyn", a:"En gud skapte verden og tiden ut fra ingenting; tiden går fra start til slutt (kristendom, jødedom, islam)."},
+  {del:1,q:"Syklisk historiesyn", a:"Verden blir til og går under, om og om igjen – henger sammen med reinkarnasjon (hinduisme, buddhisme)."},
+  {del:1,q:"Den gylne regel", a:"Gjør mot andre som du vil at andre skal gjøre mot deg – finnes i variasjoner i de fleste religioner/livssyn."},
+  {del:1,q:"Sekularisering", a:"At religion mister innflytelse over enkeltmennesker, kultur eller samfunn – på samfunns-, organisasjons- og individnivå."},
+  {del:1,q:"Believing without belonging", a:"Å tro uten å tilhøre/delta aktivt i et trossamfunn – tro, praksis og medlemskap faller ikke nødvendigvis sammen."},
+  {del:1,q:"Urfolk i Norge", a:"Samene."},
+  {del:1,q:"Norges fem nasjonale minoriteter", a:"Jøder, kvener/norskfinner, skogfinner, rom (sigøynere) og romanifolket/tatere."},
+  {del:1,q:"Fundamentalisme", a:"Religiøs retning som hevder å eie den ene, bokstavelige sannheten om gud, og gjør aktiv motstand mot sekularisering."},
+  {del:1,q:"Religionskritikk", a:"Å granske og vurdere en religiøs praksis eller teori – ikke nødvendigvis å avvise religion."},
+  {del:1,q:"Intern religionskritikk", a:"Kritikk fra troende medlemmer selv, f.eks. Luther, Jesus, Muhammed, Buddha."},
+  {del:1,q:"Ludwig Feuerbach", a:"Gud er en projeksjon av menneskets ønsker og behov."},
+  {del:1,q:"Karl Marx", a:"Religion er «opium for folket» – trøst som dysser ned kritikk av sosial urettferdighet."},
+  {del:1,q:"Friedrich Nietzsche", a:"«Gud er død» – uten Gud står mennesket friere til å se sine egne verdier."},
+  {del:1,q:"Sigmund Freud", a:"Gud er en mestringsstrategi; religion er nært knyttet til nevrose."},
+  {del:1,q:"Det store skismaet (1054)", a:"Splittelsen mellom den katolske og den ortodokse kirke, som følge av uenighet om pavens makt."},
+  {del:1,q:"Empatisk innlevelse", a:"Å bruke fantasien for å forstå en religion/et livssyn på dets egne premisser, uten selv å måtte tro på det."},
+  {del:1,q:"Dogme", a:"En læresetning som regnes som absolutt sann innenfor en religion, og som ikke skal betviles."},
+  {del:1,q:"Trosbekjennelse", a:"En formell, ofte offisiell erklæring av hva en religion/trosretning tror på."},
+  {del:2,q:"Ortodoks jødedom", a:"Retning der Toraen regnes som guddommelig og loven skal følges – omfatter ny-ortodokse og ultraortodokse."},
+  {del:2,q:"Reformjødedom", a:"Retning som ser religiøs praksis som en personlig sak, og vektlegger etikk/medmenneskelighet framfor bokstavelig regelfølging."},
+  {del:2,q:"Konservativ jødedom", a:"Retning som mener loven må følges, men tolkes inn i en moderne kontekst."},
+  {del:2,q:"Mitsva (mitsvot)", a:"Religiøst bud. Jødisk tradisjon regner 613 mitsvot: 248 positive og 365 negative forpliktelser."},
+  {del:2,q:"Nestekjærlighetsbudet", a:"«Du skal elske din neste som deg selv» (3. Mos. 19,18) – sentralt i jødisk etikk."},
+  {del:2,q:"Guds utvalgte folk", a:"Kan tolkes som «framfor» (overlegenhet) eller «blant» (ansvar/oppgave) alle andre folk – de fleste lærde vektlegger ansvaret."},
+  {del:2,q:"Abraham", a:"Stamfar til det jødiske folket, inngikk pakt med Gud om land og etterkommere."},
+  {del:2,q:"Moses", a:"Ledet utvandringen fra Egypt (Exodus) og mottok Toraen på Sinai-fjellet."},
+  {del:2,q:"Kong David", a:"Samlet de israelittiske stammene ca. år 1000 f.Kr. og gjorde Jerusalem til hovedstad."},
+  {del:2,q:"Det første tempelet", a:"Bygget av Salomo, ødelagt av Babylon i 586 f.Kr."},
+  {del:2,q:"Det andre tempelet", a:"Bygget etter det babylonske eksilet, ødelagt av Romerriket i år 70 e.Kr."},
+  {del:2,q:"Diaspora", a:"Jødenes spredning og liv utenfor Israel/Kanaan, særlig etter år 70 e.Kr."},
+  {del:2,q:"Rabbiner", a:"Jødisk lærd og religiøs leder med kunnskap om Toraen og jødisk lov."},
+  {del:2,q:"Sionisme", a:"Bevegelse (Theodor Herzl, 1896) for en jødisk nasjonalstat i Israel."},
+  {del:2,q:"Holocaust", a:"Nazistenes folkemord på ca. 6 millioner jøder under 2. verdenskrig (1941–1945)."},
+  {del:2,q:"FNs delingsplan / staten Israel", a:"FN vedtok delingsplanen 1947; staten Israel ble proklamert 14. mai 1948."},
+  {del:2,q:"Tanakh", a:"Den jødiske bibelen: Tora, Neviim (Profetene) og Ketuvim (Skriftene)."},
+  {del:2,q:"Talmud", a:"Mishna + Gemara – jødedommens mest omfattende samling av lov, etikk og diskusjon."},
+  {del:2,q:"Siddur", a:"Den jødiske bønneboken."},
+  {del:2,q:"Shema", a:"Jødedommens sentrale trosbekjennelse: «Hør, Israel: Herren er vår Gud, Herren er én.»"},
+  {del:2,q:"Kosher", a:"De jødiske spisereglene – bl.a. forbud mot å blande melk og kjøtt."},
+  {del:2,q:"Shabbat", a:"Den ukentlige hviledagen, fra fredag til lørdag kveld."},
+  {del:2,q:"Pesach", a:"Påsken – minner om utvandringen fra Egypt, med sedermåltid og usyret brød (matzo)."},
+  {del:2,q:"Jom Kippur", a:"Forsoningsdagen – den helligste dagen i det jødiske året, preget av faste og bønn."},
+  {del:2,q:"Hanukka", a:"8 dager, minner om gjeninnvielsen av tempelet og miraklet med tempeloljen."},
+  {del:2,q:"Purim", a:"Minner om redningen av jødene i Persia (Esters bok) – feires med utkledning og gaver til fattige."},
+  {del:2,q:"Bar mitsva / bat mitsva", a:"Seremoni som markerer religiøs myndighet – ved 13 år (gutter) og 12 år (jenter)."},
+  {del:2,q:"Davidsstjernen", a:"Seksspisset stjerne, symbol på jødisk identitet – på Israels flagg."},
+  {del:2,q:"Kippa", a:"Rundt hodeplagg, tegn på ærbødighet for Gud."},
+  {del:2,q:"Mesusa", a:"Kapsel med Shema-tekst festet på dørkarmen."},
+  {del:2,q:"Tefillin", a:"Bønnekapsler med bibelvers, bundet til panne og arm under hverdagens morgenbønn."},
+  {del:2,q:"Menora", a:"Den sjuarmede lysestaken fra tempelet (ikke å forveksle med hanukkia)."},
+  {del:2,q:"Tallit", a:"Bønneskjerf med frynser (tzitzit), skal minne bæreren om budene."},
+  {del:3,q:"Kanon (Bibelen)", a:"Den offisielle samlingen av hellige skrifter i kristendommen."},
+  {del:3,q:"Det gamle testamentet", a:"39 bøker, hebraisk, skrevet ca. 900–400 f.Kr. Fire grupper: Mosebøkene, historiske bøker, poetiske bøker, profetbøker."},
+  {del:3,q:"Det nye testamentet", a:"27 bøker, gresk, skrevet ca. 50–100 e.Kr. Fire grupper: evangeliene, Apostlenes gjerninger, brevene, Johannes' åpenbaring."},
+  {del:3,q:"Evangelium", a:"Betyr «godt budskap»; de fire bøkene om Jesu liv, død og oppstandelse."},
+  {del:3,q:"De fire evangelistene", a:"Matteus, Markus, Lukas og Johannes."},
+  {del:3,q:"Matteusevangeliet", a:"Ca. 70–80 e.Kr., skrevet for kristne jøder – Jesus er Messias, kirken er Guds nye folk."},
+  {del:3,q:"Markusevangeliet", a:"Ca. 65 e.Kr., for ikke-jøder – en lidelseshistorie der Messias lider og dør."},
+  {del:3,q:"Lukasevangeliet", a:"Ca. 70–80 e.Kr., skrevet av legen Lukas – Jesus som verdens frelser, omsorg for syke og nødlidende."},
+  {del:3,q:"Johannesevangeliet", a:"Ca. 90 e.Kr. – refleksjon over hvem Jesus er, bruker språklige bilder."},
+  {del:3,q:"Lignelse", a:"En bilderik, symbolsk fortelling Jesus brukte for å forkynne, f.eks. den bortkomne sønn."},
+  {del:3,q:"Apostlenes gjerninger", a:"Fortsettelsen på Lukasevangeliet – beskriver urkirkens historie og Paulus' misjonsvirksomhet."},
+  {del:3,q:"Johannes' åpenbaring", a:"Siste bok i NT – brev til menigheter og en beskrivelse av verdens ende og Guds rike."},
+  {del:3,q:"Historisk-kritisk bibelforskning", a:"Vitenskapelig tilnærming (fra 1800-tallet) som studerer Bibelens tekster, samtid, forfattere og endringer over tid."},
+  {del:3,q:"Frigjøringsteologi", a:"Bibeltolkning fra 1960-tallet som vektlegger frigjøring fra fattigdom og undertrykkelse – omstridt pga. politisk tilknytning."},
+  {del:3,q:"Bibelisme", a:"Å ta alt innholdet i Bibelen bokstavelig."},
+  {del:3,q:"Kristen fundamentalisme (om Bibelen)", a:"Bibelen er ufeilbar; ofte også fokus på tradisjonelle familieverdier og nasjonalisme."},
+  {del:3,q:"Kreasjonisme", a:"At skapelsesberetningen forstås bokstavelig – Gud skapte verden på 6 dager."},
+  {del:3,q:"Sant menneske og sann Gud", a:"Kristen lære (Kalkedon 451) om at Jesus var fullt ut menneske og fullt ut Gud samtidig."},
+  {del:3,q:"Jesus som frelser", a:"Jesus sonet for menneskers synd gjennom død og oppstandelse, og åpnet veien til forsoning med Gud."},
+  {del:3,q:"Messias – jødisk vs. kristen forståelse", a:"Jødedom: en fremtidig konge som ennå ikke har kommet. Kristendom: Messias (Kristus) har allerede kommet i Jesus."},
+  {del:3,q:"Nattverd", a:"Måltid med brød og vin til minne om Jesu siste måltid og offerdød."},
+  {del:3,q:"Paulus (opprinnelig navn)", a:"Saulus – jødisk fariseer som forfulgte de første kristne før han ble omvendt."},
+  {del:3,q:"Paulus' omvendelse", a:"Møtte Jesus i en syns-/lysopplevelse på veien til Damaskus."},
+  {del:3,q:"Hedningenes apostel", a:"Paulus' tilnavn – han misjonerte særlig blant ikke-jøder og mente frelsen var for alle."},
+  {del:3,q:"Misjonsbefalingen", a:"Matt 28,18–20: Jesu befaling om å gjøre alle folkeslag til disipler."},
+  {del:3,q:"Erstatningsteologi", a:"Historisk kristen tanke om at kirken «overtok» rollen som Guds utvalgte folk fra jødene – avvist av de fleste kirkesamfunn i dag."},
+  {del:3,q:"Avlatsbrev", a:"Dokument solgt av den katolske kirke i middelalderen som lovet ettergivelse av straff for synd – Luthers kritikk utløste reformasjonen."},
+  {del:3,q:"Dissenterloven (1845)", a:"Norsk lov som ga andre kristne trossamfunn enn statskirken rett til å utøve sin religion."},
+  {del:3,q:"Pietisme", a:"Protestantisk retning med vekt på personlig, følelsesmessig gudstro og aktivt kristenliv – sterk i Norge (haugianerne)."},
+  {del:3,q:"Sakrament", a:"Hellig handling som formidler Guds nåde, f.eks. dåp og nattverd."},
+  {del:3,q:"Martyr", a:"En som lider døden/forfølgelse for sin tro, f.eks. Stefanus."},
+  {del:3,q:"Åpenbaringsreligion", a:"En religion som bygger på at Gud selv har åpenbart/vist seg for mennesker."},
+  {del:3,q:"Spesiell åpenbaring", a:"Guds direkte, personlige åpenbaring gjennom Jesus."},
+  {del:3,q:"Allmenn åpenbaring", a:"Tilgjengelig for alle mennesker, uavhengig av religion – anelse om Gud ved undring eller naturopplevelse."},
+  {del:3,q:"Sjudagersfortellingen", a:"Skapelsesfortellingen i 1 Mos 1–2,4 – trolig skrevet under/etter det babylonske fangenskapet (ca. 586–530 f.Kr.)."},
+  {del:3,q:"Hagefortellingen", a:"Skapelsesfortellingen i 1 Mos 2,4–25 – trolig den eldste, fra ca. år 1000 f.Kr. (Kong Davids tid)."},
+  {del:3,q:"Dommedag", a:"Ifølge kristen tro en konkret dag der Gud tar et endelig oppgjør med det onde, og Jesus kommer tilbake."},
+  {del:3,q:"Forvalteransvar", a:"Mennesket er Guds representant og skal forvalte skaperverket på en bærekraftig måte."},
+  {del:3,q:"Syndefallet", a:"Fortellingen i 1 Mos 3 om at mennesket lot seg lokke til ulydighet mot Gud."},
+  {del:3,q:"Arvesynd", a:"At alle mennesker fødes inn i en tilværelse «utenfor paradis», som opprørere mot Gud – en makt mennesket ikke kan fri seg fra selv."},
+  {del:3,q:"Patriarkat", a:"Samfunnsordning der menn har den dominerende makten/posisjonen, bl.a. i samfunnet NT ble skrevet i."},
+  {del:3,q:"Galaterbrevet 3,28", a:"«Her er ikke jøde eller greker... ikke mann og kvinne, dere er alle én i Kristus Jesus» – et av NTs tydeligste likeverds-utsagn."},
+  {del:3,q:"Feministisk teologi", a:"Retning fra 1900-tallet som leser bibeltekst og tradisjon på nytt med vekt på likeverd mellom kjønnene."},
+  {del:3,q:"Frelse ved tro", a:"Mennesket mottar frelsen som en gave fra Gud ved å tro på Jesus – ikke noe man opptjener."},
+  {del:3,q:"Det kristne fremtidshåpet", a:"Frelse fra synd og til evig liv i fellesskap med Jesus; starter allerede på jorden når troen begynner (Joh 5,24)."},
+  {del:3,q:"Naturlig lov", a:"Tanken om at moralsk innsikt ligger i selve den menneskelige naturen – alle kan ane rett og galt gjennom fornuft og samvittighet."},
+  {del:3,q:"Den gylne regel", a:"«Alt dere vil at andre skal gjøre mot dere, skal dere også gjøre mot dem» (Matt 7,12) – finnes i variasjoner i mange religioner."},
+  {del:3,q:"Menneskeverd", a:"At mennesket har egenverdi fordi det er skapt i Guds bilde, og at livet derfor er hellig og ukrenkelig."},
+  {del:3,q:"Likeverd (kristen etikk)", a:"At alle mennesker er like mye verdt – grunnlag for kritikk av utnytting og urett."},
+  {del:3,q:"Naturens egenverdi", a:"At naturen har verdi fordi den er del av Guds skaperverk, ikke bare fordi den er nyttig for mennesker."},
+  {del:3,q:"Det dobbelte kjærlighetsbud", a:"Å elske Gud av hele sitt hjerte, og sin neste som seg selv (Matt 22,37–39) – hovednormen i kristen etikk."},
+  {del:3,q:"Bergprekenen", a:"Jesu samling av etiske taler i Matteus kap. 5–7, med bl.a. den gylne regel."},
+  {del:3,q:"Etisk forbilde", a:"Jesus viser Guds vilje gjennom egne ord og handlinger, f.eks. ved å vaske disiplenes føtter."}
 ];
 const FC_KEY = 'religion-del1-flashcards-known';
 function loadKnown(){ try { return new Set(JSON.parse(localStorage.getItem(FC_KEY)) || []); } catch(e){ return new Set(); } }
 function saveKnown(set){ try { localStorage.setItem(FC_KEY, JSON.stringify(Array.from(set))); } catch(e){} }
-let fcOrder = flashcards.map((_, i) => i);
+let fcFilterDel = 'all';
+function filteredIndices(){
+  return flashcards
+    .map((c, i) => ({c, i}))
+    .filter(({c}) => fcFilterDel === 'all' || c.del === fcFilterDel)
+    .map(({i}) => i);
+}
+let fcOrder = filteredIndices();
 let fcIndex = 0;
 let fcFlipped = false;
 let fcKnown = loadKnown();
@@ -1326,15 +1590,31 @@ const fcFront = document.getElementById('fcFront');
 const fcBack = document.getElementById('fcBack');
 const fcProgress = document.getElementById('fcProgress');
 function renderCard(){
+  if (fcOrder.length === 0) {
+    fcFront.textContent = 'Ingen kort i denne delen';
+    fcBack.textContent = '';
+    fcProgress.textContent = '';
+    return;
+  }
   const item = flashcards[fcOrder[fcIndex]];
   fcFront.textContent = item.q;
   fcBack.textContent = item.a;
   fcCard.classList.remove('flipped');
   fcFlipped = false;
-  const knownCount = fcKnown.size;
+  const knownCount = fcOrder.filter(i => fcKnown.has(i)).length;
   const isKnown = fcKnown.has(fcOrder[fcIndex]);
   fcProgress.textContent = `Kort ${fcIndex+1} av ${fcOrder.length} · ${knownCount} markert som kjent` + (isKnown ? ' · ✓ denne kan du' : '');
 }
+document.querySelectorAll('.fc-filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.fc-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    fcFilterDel = btn.dataset.del === 'all' ? 'all' : Number(btn.dataset.del);
+    fcOrder = filteredIndices();
+    fcIndex = 0;
+    renderCard();
+  });
+});
 function shuffle(arr){
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i+1));
@@ -1351,10 +1631,12 @@ fcCard.addEventListener('click', () => {
   fcCard.classList.toggle('flipped', fcFlipped);
 });
 document.getElementById('fcNext').addEventListener('click', () => {
+  if (fcOrder.length === 0) return;
   fcIndex = (fcIndex + 1) % fcOrder.length;
   renderCard();
 });
 document.getElementById('fcPrev').addEventListener('click', () => {
+  if (fcOrder.length === 0) return;
   fcIndex = (fcIndex - 1 + fcOrder.length) % fcOrder.length;
   renderCard();
 });
@@ -1364,6 +1646,7 @@ document.getElementById('fcShuffle').addEventListener('click', () => {
   renderCard();
 });
 document.getElementById('fcKnown').addEventListener('click', () => {
+  if (fcOrder.length === 0) return;
   fcKnown.add(fcOrder[fcIndex]);
   saveKnown(fcKnown);
   fcIndex = (fcIndex + 1) % fcOrder.length;
